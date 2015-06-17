@@ -2,6 +2,10 @@ body{
     margin:0;
     font-size: 14px;
     padding: 0;
+    background: #eee;
+}
+.container{
+    margin: 0 1em;
 }
 /*desktop min-width: 1200px */
 .col-12 {
@@ -41,71 +45,18 @@ body{
     width: 8.33333333%;
 }
 .backdrop{
-    min-width: 1200px;
-}
-.container{
-    width: 1200px;
-    margin: 0 auto;
-}
-@media (max-width: 1199px ){
-    .backdrop{
-        min-width: 1000px;
-    }
-    .container{
-        width: 1000px;
-        margin: 0 auto;
-    }
 
-    .xcol-12 {
-        width: 100%;
-    }
-    .xcol-11 {
-        width: 91.66666667%;
-    }
-    .xcol-10 {
-        width: 83.33333333%;
-    }
-    .xcol-9 {
-        width: 75%;
-    }
-    .xcol-8 {
-        width: 66.66666667%;
-    }
-    .xcol-7 {
-        width: 58.33333333%;
-    }
-    .xcol-6 {
-        width: 50%;
-    }
-    .xcol-5 {
-        width: 41.66666667%;
-    }
-    .xcol-4 {
-        width: 33.33333333%;
-    }
-    .xcol-3 {
-        width: 25%;
-    }
-    .xcol-2 {
-        width: 16.66666667%;
-    }
-    .xcol-1 {
-        width: 8.33333333%;
-    }
 }
 .panel{
-    border: 1px solid #a4a6ac;
-    border-radius: 7px;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 5px;
+    margin-bottom: 1em;
 }
 .form-group{
-    padding: 0 5px;
-    margin-top: 10px;
+
 }
 .form-group .form-label{
     display: block;
-    width: 6em;
+    width: 4em;
     float: left;
     height: 2.6em;
     line-height: 2.6em;
@@ -163,14 +114,14 @@ label.error{
 input.error{
     outline-color: #fe3548 !important;
 }
-span.error{
-    padding: 0.3em;
+div.error{
+    display: none;
+    padding:1em 0.3em 0 0.3em;
     color: #ce2e39;
     font-weight:bold;
 }
 /**********table**************/
 table{
-    margin-bottom: 20px;
     width: 100%;
     border-top: 1px solid #dddddd;
     border-left: 1px solid #dddddd;
@@ -185,8 +136,20 @@ table{
 td,th{
     border-right:1px solid #dddddd;
     border-bottom:1px solid #dddddd;
-    padding: 0.5em;
+    line-height: 2em;
 }
 .center{
    text-align: center;
+}
+h2{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background: #fe3548;
+    line-height: 2.5em;
+    font-weight: bold;
+    color: #ffffff;
+}
+.title{
+    padding: 0;
 }
