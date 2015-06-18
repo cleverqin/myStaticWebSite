@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title></title>
+    <link href="css/jquery.carousel.css" rel="stylesheet"/>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .banner{
+            width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+
+</head>
+<body>
+<div class="banner">
+    <div class="carousel" id="carousel" style="height: 321px">
+        <ul class="carousel-content" >
+            <li><a href="#" style="background:rgb(40,143,62)"><div class="imgContainer"><img src="img/m_temp1.jpg"></div></a></li>
+            <li><a href="#" style="background:rgb(245,161,1)"><div class="imgContainer"><img src="img/m_temp2.jpg" ></div></a></li>
+            <li><a href="#" style="background:rgb(37,76,141)"><div class="imgContainer"><img src="img/m_temp3.jpg"></div></a></li>
+            <li><a href="#" style="background:rgb(40,143,62)"><div class="imgContainer"><img src="img/m_temp1.jpg"></div></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery.carousel.js"></script>
+<script>
+            window.onload=function(){
+                $("#carousel").carousel();
+            }
+</script>
+</html>
