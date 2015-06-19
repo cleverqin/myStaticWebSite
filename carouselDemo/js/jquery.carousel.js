@@ -42,11 +42,11 @@
 
 
         if(transform){
-            this.setLeftStyle = function(style,value){
-                style[transform] = "translate("+value+",0)";
+            this.setLeftStyle = function(el,value){
+                el.style[transform] = "translate("+value+",0)";
             };
         }else{
-            this.setLeftStyle = function(style,value){style.left = value};
+            this.setLeftStyle = function(el,value){el.style.left = value};
         }
 
         if(touchable){
@@ -111,7 +111,7 @@
                 pos.now = x;
             }
 
-            this.setLeftStyle(this.list.style,pos.now+"px");
+            this.setLeftStyle(this.list,pos.now+"px");
             pos.touchX = touchX;
         },
         touchstart:function(e){
@@ -178,17 +178,36 @@
                 style = {};
             this.isInAnim = true;
             if(!this.isInDrag){
-                this.setLeftStyle(list.style,-pre*width+"px");
+                this.setLeftStyle(list,-pre*width+"px");
             }
 
-            this.setLeftStyle(style,-index*width+"px");
+
             if((index == 0 && pre === (len-1)) || (pre == 0 && index === (len-1)))
                 this.setListToOrigin();
-            $(list).animate(style, 300, function () {
-                me.setLeftStyle(list.style,-index*100+"%");
+
+            this.animateLeft(list,-index*width, 300, function () {
+                me.setLeftStyle(list,-index*100+"%");
                 me.isInAnim = false;
                 me.setList(realIndex);
             });
+        },
+        animateLeft:function(el,left,time,callback){
+            if(transform){
+                var style = el.style;
+
+                style["-webkit-transition"] = "-webkit-transform "+time+"ms linear 0s, transform";
+                style["transition"] = "transform "+time+"ms linear 0s, transform";
+                style[transform] = "translate("+left+"px,0)";
+                var transitionend = function(){
+                    el.removeEventListener("transitionend",transitionend,false);
+                    el.style["-webkit-transition"] = "";
+                    el.style["transition"] = "";
+                    callback();
+                };
+                el.addEventListener("transitionend",transitionend,false);
+            }else{
+                $(el).animate({"left":left},time,callback);
+            }
         },
         setList:function(realIndex){
             if(!this.option.infinite)
@@ -205,7 +224,7 @@
                 this.setListToOrigin();
             }
 
-            this.setLeftStyle(this.list.style,-realIndex*100+"%")
+            this.setLeftStyle(this.list,-realIndex*100+"%")
         },
         setListToOrigin:function(){
             this.first.style.left = "0%";
