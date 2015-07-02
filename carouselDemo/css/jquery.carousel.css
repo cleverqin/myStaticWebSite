@@ -55,3 +55,6 @@
 .carousel>ul.carousel-footer>li.active>span.dot{
     background-color: rgb(244,161,0);
 }
+img{
+    width: 100%;
+}

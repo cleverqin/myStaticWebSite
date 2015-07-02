@@ -48,7 +48,6 @@ body{
 
 }
 .panel{
-    padding: 5px;
     margin-bottom: 1em;
 }
 .form-group{
@@ -137,6 +136,7 @@ td,th{
     border-right:1px solid #dddddd;
     border-bottom:1px solid #dddddd;
     line-height: 2em;
+    text-align: center;
 }
 .center{
    text-align: center;
