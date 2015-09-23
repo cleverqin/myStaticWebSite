@@ -1,60 +1,44 @@
 /**
  * Created by ghost on 2015/6/17.
  */
-(function(){
-
-    $('.nav-wrap').on('click','.main-nav',function(e){
-        e.preventDefault();
-
-        var me = $(this),
-            navWrap = me.closest('.nav-wrap'), // 动画效果的父容器
-            navs = navWrap.find('nav a'); // 父容器中的所有子菜单
-
-        if(!navWrap.hasClass('active') && !isLocated){
-
-            // 圆的半径 raduis
-            var width = navWrap.width(),
-                radius = width / 2;
-
-            // 圆形菜单的起始、终止角度
-            var startAngle = 0,
-                endAngle = 360;
-
-            // 两个子菜单间的夹角 gap
-            var total = navs.length,
-                gap = (endAngle - startAngle)/total;
-
-            // 角度->弧度
-            var radian = Math.PI / 180;
-
-
-            /*
-             * 计算并确定各个子菜单的最终位置
-             */
-            $.each(navs, function(index, item){
-
-                // 当前子菜单与x轴正向的夹角 θ （角度->弧度）
-                var myAngle = (startAngle + gap*index) * radian;  // θ
-
-                // 计算当前子菜单相对于左上角(0,0)的坐标 (x,y)
-                var myX = radius + radius * Math.cos( myAngle ), // x=r+rcos(θ)
-                    myY = radius + radius * Math.sin( myAngle ); // y=r+rsin(θ)
-
-                // 设置当前子菜单的位置 (left,top) = (x,y)
-                $(this).css({
-                    left: myX + 'px',
-                    top:  myY + 'px'
-                });
-            });
-
-            isLocated = true;
+$(function(){
+    setInterval(function(){
+        var date=new Date();
+        date=date.dateFormat("yyyy-MM-dd EEE hh:mm:ss")
+        $("#time").html(date);
+    },1000)
+})
+Date.prototype.dateFormat=function(fmt) {
+    var o = {
+        "M+" : this.getMonth()+1, //月份
+        "d+" : this.getDate(), //日
+        "h+" : this.getHours()%12 == 0 ? 12 : this.getHours()%12, //小时
+        "H+" : this.getHours(), //小时
+        "m+" : this.getMinutes(), //分
+        "s+" : this.getSeconds(), //秒
+        "q+" : Math.floor((this.getMonth()+3)/3), //季度
+        "S" : this.getMilliseconds() //毫秒
+    };
+    var week = {
+        "0" : "日",
+        "1" : "一",
+        "2" : "二",
+        "3" : "三",
+        "4" : "四",
+        "5" : "五",
+        "6" : "六"
+    };
+    if(/(y+)/.test(fmt)){
+        fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    }
+    if(/(E+)/.test(fmt)){
+        fmt=fmt.replace(RegExp.$1, ((RegExp.$1.length>1) ? (RegExp.$1.length>2 ? "星期" : "周") : "")+week[this.getDay()+""]);
+    }
+    for(var k in o){
+        if(new RegExp("("+ k +")").test(fmt)){
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
         }
+    }
+    return fmt;
+}
 
-        navWrap.toggleClass('active');
-    });
-    console.log(window.location.pathname);
-    console.log(window.location.port);
-    console.log(window.location.protocol);
-    console.log(window.location.pathname);
-
-})();
