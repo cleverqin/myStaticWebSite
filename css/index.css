@@ -1,112 +1,27 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-body {
+@charset "utf-8";
+@import url(reset.css);
+/********slides轮播插件样式——start************/
+.slides{display:block;position:relative;overflow:hidden;margin:0 auto}
+.slides>ul:first-child,.slides>ul>li{display:block;list-style:none;position:absolute;padding:0;margin:0;width:100%;height:100%;top:0;left:0}
+.slides>.bidBox{display:block;position:absolute;width:100%;bottom:0;padding:10px 0;text-align:center}
+.slides>.bidBox>.bidItem{display:inline-block;width:9px;height:9px;border:1px solid #eee;margin-left:10px;border-radius:5px;cursor:pointer}
+.slides>.bidBox>.bidItem.active{background-color:#fff}
+/********slides轮播插件样式——end************/
+body{
     background-color: #eee;
-    font-family: "Microsoft Yahei";
-}
-h1 {
-    text-align: center;
-    color: #fff;
-}
-
-.nav-wrap {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 50px auto;
-    border-radius: 50%;
-}
-.nav-wrap .main-nav {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    width: 40px;
-    height: 33px;
-    line-height: 40px;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    background: #9792a4 url("../resources/img/icon-menu.png") no-repeat center;
-    background-size: 25px 17px;
-    cursor: pointer;
-}
-.nav-wrap nav {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform: scale(0);
-    transition: all 0.5s ease-out;
-    opacity: 0;
-}
-.nav-wrap.active nav {
-    transform: scale(1);
-    opacity: 1;
-}
-.nav-wrap nav > a{
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: #f44283;
-    text-align: center;
-    line-height: 30px;
-    text-decoration: none;
-    color: #fff;
-    border-radius: 3px;
-    text-shadow: 1px 1px 0px #000;
-    transform: translate(-50%,-50%);
 }
 .content{
-    width: 1000px;
-    margin: 0 auto;
-}
-/**************************相册列表**************************************/
-/*ul wrapper*/
-#iSlider-wrapper {
-    height: 100%;
+    max-width: 1000px;
     width: 100%;
-    overflow: hidden;
-    position: absolute;
-}
-
-#iSlider-wrapper ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-}
-#iSlider-wrapper li {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    list-style: none;
-}
-#iSlider-wrapper li  img{
-    position: absolute;
-    width: auto;
-    height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-.isliderBox{
-    position: relative;
-    margin: 0 auto;
-    display: block;
-    height: 400px;
     min-width: 320px;
+    margin: 0 auto;
+}
+section{
+    padding-bottom: 20px;
 }
 /*************************header头部样式*************************************/
 .header{
-    padding-top: 60px;
+    padding-top: 10px;
     padding-bottom: 10px;
     background:#E9E6BD url("../resources/img/p3.jpg") no-repeat center 78%;
     width:100%;
@@ -130,7 +45,7 @@ h1 {
 }
 /**********************navBox导航样式**********************/
 .navBox{
-    background: #fe3548;
+    background: #6f6f6f;
 }
 .navList{
     list-style: none;
@@ -151,6 +66,81 @@ h1 {
     text-decoration:none;
 }
 .navList>li>a:hover{
-    background: rgba(212, 41, 50, 0.61);
-
+    background: #666666;
+}
+/***************footer底部样式*****************/
+.footer{
+    background-color: #E2E2E2;
+    padding: 20px 0;
+}
+.coBox:after{
+    display: table;
+    content: "";
+    clear: both;
+}
+.coBox>li{
+    float: left;
+    width: 50%;
+}
+.coBox>li:first-child{
+    border-right:1px solid #d1d1d1;
+    margin-right: -1px;
+    height: 150px;
+}
+.myWeChatBox img{
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+.contactMeBox{
+    width: 150px;
+    margin: 0 auto;
+}
+.contactMeBox p{
+    font-size: 14px;
+    color: #474747;
+    line-height: 24px;
+}
+.contactMeBox p.title{
+    font-weight: bold;
+    color: #646464;
+    font-size: 16px;
+}
+.contactMeBox p.tag{
+    font-weight: bold;
+}
+.bottomBox{
+    font-size: 12px;
+    color: #666666;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 10px;
+}
+/***************************************/
+.articleBox{
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #e3e3e3;
+}
+.articleBox .articleTitle{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 2.5em;
+    text-align: center;
+}
+.articleBox p{
+    text-indent: 2em;
+    font-size: 14px;
+    color: #333;
+    line-height: 24px;
+}
+.sectionTitle{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
+    margin: 10px 0px;
+    background-color: #c9dab0;
+    padding-left: 15px;
+    color: #333;
 }

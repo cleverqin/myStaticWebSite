@@ -6,28 +6,113 @@
     <link rel="shortcut icon" type="image/ico" href="resources/favicon.ico" />
     <title>欢迎来到我的网站,在这里我们共同分享知识与快乐！</title>
     <link href="css/index.css" rel="stylesheet"/>
+    <script src="resources/lib/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="privatePlug-in/js/plug-ins.js" type="text/javascript"></script>
+    <script src="js/index.js" type="text/javascript"></script>
 </head>
 <body>
-<div class="header">
+<header class="header">
     <div class="headerImg">
         <img src="resources/img/headerIMG.png">
     </div>
     <p class="headerTitle">似水流年</p>
-</div>
+</header>
 <div class="navBox">
     <ul class="navList content">
         <li><a href="#">主页</a></li>
         <li><a  href="carouselDemo/demo.html">相册</a></li>
-        <li><a  href="#">空间</a></li>
-        <li><a  href="IDcardToMsg/demo.html">身份证验证</a></li>
-        <li><a  href="iscroll-master/demos/index.html">iscrollDemo</a></li>
-        <li><a  href="swiper-3.0.8/index.html">swiperDemo</a></li>
+        <li><a  href="http://user.qzone.qq.com/705597001">空间</a></li>
+        <li><a  href="IDcardToMsg/demo.html">身份证解析</a></li>
+        <li><a  href="iscroll-master/demos/index.html">iScroll例子</a></li>
+        <li><a  href="swiper-3.0.8/index.html">swiper例子</a></li>
+        <li><a  href="privatePlug-in/plugDemo.html">插件例子</a></li>
     </ul>
 </div>
-<div class="content">
-    <span id="time"></span>
-</div>
+<section class="content">
+    <div class="slides" style="height: 300px" id="slidesBox">
+        <ul>
+            <li><img src="resources/banner/banner01.png"/></li>
+            <li><img src="resources/banner/banner02.png"></li>
+            <li><img src="resources/banner/banner03.png"></li>
+            <li><img src="resources/banner/banner04.png"></li>
+            <li><img src="resources/banner/banner05.png"></li>
+            <li><img src="resources/banner/banner06.png"></li>
+        </ul>
+    </div>
+    <div class="sectionBox">
+        <div class="sectionTitle">1.好文推荐</div>
+        <div class="articleBox">
+            <div class="articleTitle">生活就是哲学</div>
+            <p>
+                今天清晨起来，阳光柔和，微风拂面。你顺着人行道，往学校或公司的方向走，
+                忽然看见前面一位老太太摔倒。这时你毫不犹豫地趋前扶她起来，还问她受伤没有。
+            </p>
+            <p>
+                你为什么这么做？这个问题值得想一想，不要轻易回答“因为我觉得应该”，或者“因为我高兴”。
+            </p>
+            <p>
+                前几天的一个清晨，天色昏暗，风强雨骤，你在同一条人行道上也瞥见有人摔倒，
+                却自顾撑着伞走过去了。为什么同样是你，却有两种相反的待人态度？
+            </p>
+            <p>
+                难道是天气影响你的心情，心情在决定你的行为？仔细反省一下，似乎不是如此单纯。
+                人的任何行为，背后都有一个信念作为预设。譬如，当我帮助别人时，
+                我相信：人与人之间应该互相扶持，人们形成一个大家庭，人生是有意义的，我帮人，
+                别人也会在我需要帮助时伸出援手；反之，当我拒绝帮助别人时，我心中相信：人与人各自孤立，
+                人类并无相互关怀，人生难免一死，我也无法逃避命运的摆布，还是少管些闲事儿吧。
+            </p>
+            <p>
+                问题是，你有时乐于助人，有时又拒绝助人，难道是在心中同时存在两套相反的信念？
+                如果是的话，你又如何认定自己是“一个人”呢？你怎能期望别人了解你？甚至，你了解自己吗？
+            </p>
+            <p>
+                如果你对这些问题觉得好奇，想要进一步探索答案，那么你就走上哲学之途了。
+                哲学是用比较系统的方式去思考人生的现象，然后为人生的种种抉择提供指引。
+                找到自己心中究竟潜存着哪些互不兼容的信念，进而予以疏导、整理、融合，使其显示同一立场，
+                这种“化隐为显”的工作，是哲学上关键的一步。哲学之有益于人生，也由此开始。这是任何人都可以做得到的。
+            </p>
+            <p>
+                确立自己心中的基本信念之后，我们在人生道路上就可以免除许多不必要的困惑、彷徨、挣扎、挫折。
+                天气不能再影响我们，因为我们心中自有温暖的阳光；环境不能再干扰我们，因为我们心中自有坚定的主张。
+                我们可以开始活出真正的自我，不仅内外如一、表里一致，而且始终清楚自己正在做什么，以及为什么这么做。
+            </p>
+            <p>
+                由此看来，思想的功用真是伟大。人可以凭借思想，突破有限的时间与空间，
+                掌握自己内心的真我，亦不受气候、环境、人群所拘束的自我。这个自我，既有清楚的信念，
+                又有明确的方向，因此一颦一笑、一举手一投足、一言一行，都是非常真诚、非常踏实的。不仅如此，
+                思想还能引领我们树立风范，见贤思齐，使我们在面临重大抉择时，会去想一想：若换了是孔子，是耶稣，是苏格拉底，
+                是佛陀，或是其他圣贤，处在我的情况时，又将如何决定行止？
+            </p>
+            <p>
+                如此念头一转，平平凡凡的人生就可能展现壮阔的波澜，高潮迭起。
+                人生的每一分每一秒都值得珍惜，因为其中充满了新的挑战，等着你以新的精神去响应，从而开拓新的人生境界。
+            </p>
+            <p>
+                有人说：“生活就是文化，生活就是教育。”我们也可以说：“生活就是哲学——不过还须加上一个小小的习惯，
+                即思考。”孟子肯定人的尊严，声称“人人有贵于己者，弗思耳矣”。只要养成思考的习惯，
+                生活的质量自然会随之提高，生命的内涵也将更为充实。哲学的确是我们品味人生的开始。
+            </p>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="content">
+        <ul class="coBox">
+            <li>
+                <div class="contactMeBox">
+                    <p class="title">联系我</p>
+                    <p class="tag">QQ邮箱:</p>
+                    <p>705597001@qq.com</p>
+                    <p class="tag">手机:</p>
+                    <p>15238****27</p>
+                </div>
+            </li>
+            <li>
+                <div class="myWeChatBox"><img src="resources/img/mmqrcode.png"/></div>
+            </li>
+        </ul>
+        <div class="bottomBox">备注：本网站所有权归创作者所有，如有疑问请联系作者。</div>
+    </div>
+</footer>
 </body>
-<script src="resources/lib/jquery-1.8.3.min.js" type="text/javascript"></script>
-<script src="js/index.js" type="text/javascript"></script>
 </html>

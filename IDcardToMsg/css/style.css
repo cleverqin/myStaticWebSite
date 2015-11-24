@@ -3,6 +3,7 @@ body{
     font-size: 14px;
     padding: 0;
     background: #eee;
+    font-family: "Microsoft YaHei", "SimHei", "Microsoft JhengHei", "STHeiti ";
 }
 .container{
     margin: 0 1em;
@@ -152,4 +153,11 @@ h2{
 }
 .title{
     padding: 0;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.container .panel table{
+    color: #666;
 }
