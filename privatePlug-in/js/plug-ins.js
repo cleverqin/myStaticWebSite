@@ -5,60 +5,185 @@
      * createTime 2015-09-17
      * createdBy QinZhen
      * ======================================================================== */
-    $.fn.slides = function (options) {
-        var $slidesBox=$(this),$listCard= $slidesBox.find("ul>li"),showIndex= 1,interval;
+    $.fn.SmartSlide = function (options){
         var defaultOpts={
-            autoPlay:true,
-            animationTime:200,
+            isAutoPlay:true,
+            animationTime:500,
             waitTime:5000,
-            animationType:"left"
+            animationType:"fade",
+            isNavigation:true,
+            isDirection:true,
+            isLoop:true,
+            callBack:function(curIndex,leavIndex){}
         };
         var opts= $.extend(defaultOpts,options);
-        initSlidesSytle();
-        function initSlidesSytle(){
-            if(opts.animationType=="left"){
-                $slidesBox.find("ul>li").each(function(index){
-                    this.style.left=index*100+"%";
-                })
-            }
-            var $aim=$("<div class='bidBox'></div>");
-            for(var i=0;i<$listCard.length;i++){
-                var $yan=$("<span class='bidItem'></span>");
-                $aim.append($yan)
-            }
-            $slidesBox.append($aim);
-            var $bidItemList=$(".bidBox>.bidItem");
-            $bidItemList.click(function(){
-                if(!$slidesBox.is(":animated")){
-                    var index=$(this).index();
-                    showIndex=index+1;
-                    clearInterval(interval);
-                    nextCard();
-                    actPlay();
+        var Slide = function ($el,option) {
+            var self=this;
+            this.option=option;
+            var $list = $el.children("ul.ss-content"),
+                $items = $list.children("li");
+            this.el=$el[0];
+            this.list = $list[0];
+            this.items=$items;
+            this.length = $items.length;
+            this.curIndex=0;
+            this.leavIndex=0;
+            this.interval=null;
+            this.initSlidesSytle();
+        };
+        Slide.prototype={
+            Constructor: Slide,
+            initSlidesSytle:function(){
+                var me=this;
+                if(me.option.animationType=='fade'){
+                    me.items.each(function(index){
+                        this.style.display="none";
+                        this.style.zIndex=0;
+                        if(index==me.curIndex){
+                            this.style.display="block";
+                            this.style.zIndex=1;
+                        }
+                    });
                 }
-            })
-            autoPlay();
-        }
-        function autoPlay(){
-            actPlay();
-            nextCard();
-        }
-        function actPlay(){
-            interval=setInterval(function(){
-                if(showIndex>($listCard.length)){
-                    showIndex=1;
+                if(me.option.animationType=='left'){
+                    me.items.each(function(index){
+                        this.style.left=index*100+"%";
+                    });
                 }
-                nextCard();
-            },opts.waitTime+opts.animationTime)
+                if(me.option.isNavigation){
+                    me.setNavigation();
+                }
+                if(me.option.isDirection){
+                    me.setDirection();
+                }
+                if(me.option.isAutoPlay){
+                    me.autoPlay();
+                }
+            },
+            open:function(index,leavIndex){
+                var me=this;
+                if(me.option.animationType=='fade'){
+                    var $bidItemList=$(me.el).find(".bidBox>.bidItem");
+                    me.items[leavIndex].style.zIndex=0;
+                    me.items[index].style.zIndex=1;
+                    $bidItemList.removeClass("active");
+                    $($bidItemList[index]).addClass("active");
+                    $(me.items[index]).fadeIn(me.option.animationTime,function(){
+                        me.items[leavIndex].style.display="none";
+                        me.option.callBack(index,leavIndex);
+                    })
+                }
+                if(me.option.animationType=='left'){
+                    var $bidItemList=$(me.el).find(".bidBox>.bidItem");
+                    $bidItemList.removeClass("active");
+                    $($bidItemList[index]).addClass("active");
+                    $(me.list).animate({"left":"-"+index*100+"%"},me.option.animationTime,function(){
+                        me.option.callBack(index,leavIndex);
+                    });
+                }
+            },
+            autoPlay:function(){
+                var me=this;
+                me.interval=setInterval(function(){
+                    if((0<(me.curIndex+1))&&((me.curIndex+1)<me.items.length)){
+                        me.leavIndex=me.curIndex;
+                        me.curIndex+=1;
+                    }else {
+                        me.leavIndex=me.curIndex;
+                        me.curIndex=0;
+                    }
+                    me.open(me.curIndex,me.leavIndex);
+                },me.option.waitTime+me.option.animationTime);
+            },
+            setNavigation:function(){
+                var me=this;
+                var $dotBox=$("<div class='bidBox'></div>");
+                for(var i=0;i<me.items.length;i++){
+                    var $dot=$("<span class='bidItem' data-index='"+i+"'></span>");
+                    if(i==me.curIndex){
+                        $dot.addClass('active');
+                    }
+                    $dotBox.append($dot);
+                }
+                $(me.el).append($dotBox);
+                var $bidItemList=$dotBox.children(".bidItem");
+                $bidItemList.click(function(){
+                    if(!$(me.list).is(":animated")){
+                        if(!$(this).hasClass('active')){
+                            if(me.option.isAutoPlay){
+                                me.interval=clearInterval(me.interval);
+                            }
+                            me.leavIndex=me.curIndex;
+                            me.curIndex=parseInt($(this).attr('data-index'));
+                            me.open(me.curIndex,me.leavIndex);
+                            if(me.option.isAutoPlay){
+                                me.autoPlay();
+                            }
+                        }
+                    }
+                });
+            },
+            setDirection:function(){
+                var me=this;
+                var $prev=$("<span class='ui-prev'></span>").appendTo($(me.el));
+                var $next=$("<span class='ui-next'></span>").appendTo($(me.el));
+                $prev.click(function(){
+                    if(!$(me.list).is(":animated")){
+                        if((0<=(me.curIndex-1))&&((me.curIndex-1)<me.items.length)){
+                            if(me.option.isAutoPlay){
+                                me.interval=clearInterval(me.interval);
+                            }
+                            me.leavIndex=me.curIndex;
+                            me.curIndex-=1;
+                            me.open(me.curIndex,me.leavIndex);
+                            if(me.option.isAutoPlay){
+                                me.autoPlay();
+                            }
+                        }else{
+                            if(me.option.isLoop){
+                                if(me.option.isAutoPlay){
+                                    me.interval=clearInterval(me.interval);
+                                }
+                                me.leavIndex=me.curIndex;
+                                me.curIndex=me.length-1;
+                                me.open(me.curIndex,me.leavIndex);
+                                if(me.option.isAutoPlay){
+                                    me.autoPlay();
+                                }
+                            }
+                        }
+                    }
+                });
+                $next.click(function(){
+                    if(!$(me.list).is(":animated")){
+                        if((0<(me.curIndex+1))&&((me.curIndex+1)<me.items.length)){
+                            if(me.option.isAutoPlay){
+                                me.interval=clearInterval(me.interval);
+                            }
+                            me.leavIndex=me.curIndex;
+                            me.curIndex+=1;
+                            me.open(me.curIndex,me.leavIndex);
+                            if(me.option.isAutoPlay){
+                                me.autoPlay();
+                            }
+                        }else{
+                            if (me.option.isLoop){
+                                if(me.option.isAutoPlay){
+                                    me.interval=clearInterval(me.interval);
+                                }
+                                me.leavIndex=me.curIndex;
+                                me.curIndex=0;
+                                me.open(me.curIndex,me.leavIndex);
+                                if(me.option.isAutoPlay){
+                                    me.autoPlay();
+                                }
+                            }
+                        }
+                    }
+                });
+            }
         }
-        function nextCard(){
-            var $bidItemList=$(".bidBox>.bidItem");
-            $slidesBox.find("ul").animate({"left":"-"+(showIndex-1)*100+"%"},opts.animationTime,function(){
-                $bidItemList.removeClass("active");
-                $($bidItemList[showIndex-1]).addClass("active");
-                showIndex++;
-            })
-        }
+        return new Slide($(this[0]),opts);
     };
     /* ========================================================================
      * 无缝滚动插件

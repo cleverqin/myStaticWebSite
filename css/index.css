@@ -1,11 +1,17 @@
 @charset "utf-8";
 @import url(reset.css);
 /********slides轮播插件样式——start************/
-.slides{display:block;position:relative;overflow:hidden;margin:0 auto}
-.slides>ul:first-child,.slides>ul>li{display:block;list-style:none;position:absolute;padding:0;margin:0;width:100%;height:100%;top:0;left:0}
-.slides>.bidBox{display:block;position:absolute;width:100%;bottom:0;padding:10px 0;text-align:center}
-.slides>.bidBox>.bidItem{display:inline-block;width:9px;height:9px;border:1px solid #eee;margin-left:10px;border-radius:5px;cursor:pointer}
-.slides>.bidBox>.bidItem.active{background-color:#fff}
+.ss-slide{position:relative;display:block;overflow:hidden;margin:0 auto;}
+.ss-slide>ul,.ss-slide>ul>li{position:absolute;top:0;left:0;display:block;margin:0;padding:0;width:100%;list-style:none;}
+.ss-slide>.bidBox{position:absolute;bottom:0;z-index:3;display:block;padding:10px 0;width:100%;text-align:center;}
+.ss-slide>.bidBox>.bidItem{display:inline-block;margin-left:10px;width:9px;height:9px;border:2px solid #464646;border-radius:100%;background-color:#afafaf;cursor:pointer;}
+.ss-slide>.bidBox>.bidItem.active{border:2px solid #9b9b9b;background-color:#f1f1f1;}
+.ss-slide>.bidBox>.bidItem:hover{border:2px solid #9b9b9b;background-color:#f1f1f1;}
+.ss-slide .ui-next,.ss-slide .ui-prev{position:absolute;top:50%;z-index:3;margin-top:-35px;width:41px;height:69px;background:url(../resources/img/icon-slides.png) no-repeat;cursor:pointer}
+.ss-slide .ui-prev{left:0;background-position:-84px 0}
+.ss-slide .ui-next{right:0;background-position:-93pt 0}
+.ss-slide .ui-prev:hover{background-position:0 0}
+.ss-slide .ui-next:hover{right:0;background-position:-42px 0}
 /********slides轮播插件样式——end************/
 body{
     background-color: #eee;
@@ -149,4 +155,10 @@ section{
     background-color: #c9dab0;
     padding-left: 15px;
     color: #333;
+}
+#slidesBox{
+    height: 400px;
+}
+.slideBox{
+    padding-top: 10px;
 }

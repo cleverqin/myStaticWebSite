@@ -117,3 +117,7 @@ p.title{
 .testAlterBox a:active{
     border: 1px solid #0062c4;
 }
+/**************************/
+#slidesBox li{
+    height: 300px;
+}
