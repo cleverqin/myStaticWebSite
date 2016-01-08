@@ -27,10 +27,11 @@
             this.items=$items;
             this.length = $items.length;
             this.curIndex=0;
-            this.leavIndex=0;
+            this.LeavIndex=0;
+            this.power=true;
             this.interval=null;
             this.initSlidesSytle();
-        };
+        }
         Slide.prototype={
             Constructor: Slide,
             initSlidesSytle:function(){
@@ -43,12 +44,12 @@
                             this.style.display="block";
                             this.style.zIndex=1;
                         }
-                    });
+                    })
                 }
                 if(me.option.animationType=='left'){
                     me.items.each(function(index){
                         this.style.left=index*100+"%";
-                    });
+                    })
                 }
                 if(me.option.isNavigation){
                     me.setNavigation();
@@ -62,6 +63,7 @@
             },
             open:function(index,leavIndex){
                 var me=this;
+                me.power=false;
                 if(me.option.animationType=='fade'){
                     var $bidItemList=$(me.el).find(".bidBox>.bidItem");
                     me.items[leavIndex].style.zIndex=0;
@@ -70,6 +72,7 @@
                     $($bidItemList[index]).addClass("active");
                     $(me.items[index]).fadeIn(me.option.animationTime,function(){
                         me.items[leavIndex].style.display="none";
+                        me.power=true;
                         me.option.callBack(index,leavIndex);
                     })
                 }
@@ -78,8 +81,9 @@
                     $bidItemList.removeClass("active");
                     $($bidItemList[index]).addClass("active");
                     $(me.list).animate({"left":"-"+index*100+"%"},me.option.animationTime,function(){
+                        me.power=true;
                         me.option.callBack(index,leavIndex);
-                    });
+                    })
                 }
             },
             autoPlay:function(){
@@ -93,7 +97,7 @@
                         me.curIndex=0;
                     }
                     me.open(me.curIndex,me.leavIndex);
-                },me.option.waitTime+me.option.animationTime);
+                },me.option.waitTime+me.option.animationTime)
             },
             setNavigation:function(){
                 var me=this;
@@ -103,12 +107,12 @@
                     if(i==me.curIndex){
                         $dot.addClass('active');
                     }
-                    $dotBox.append($dot);
+                    $dotBox.append($dot)
                 }
                 $(me.el).append($dotBox);
                 var $bidItemList=$dotBox.children(".bidItem");
                 $bidItemList.click(function(){
-                    if(!$(me.list).is(":animated")){
+                    if(me.power){
                         if(!$(this).hasClass('active')){
                             if(me.option.isAutoPlay){
                                 me.interval=clearInterval(me.interval);
@@ -128,7 +132,7 @@
                 var $prev=$("<span class='ui-prev'></span>").appendTo($(me.el));
                 var $next=$("<span class='ui-next'></span>").appendTo($(me.el));
                 $prev.click(function(){
-                    if(!$(me.list).is(":animated")){
+                    if(me.power){
                         if((0<=(me.curIndex-1))&&((me.curIndex-1)<me.items.length)){
                             if(me.option.isAutoPlay){
                                 me.interval=clearInterval(me.interval);
@@ -155,7 +159,7 @@
                     }
                 });
                 $next.click(function(){
-                    if(!$(me.list).is(":animated")){
+                    if(me.power){
                         if((0<(me.curIndex+1))&&((me.curIndex+1)<me.items.length)){
                             if(me.option.isAutoPlay){
                                 me.interval=clearInterval(me.interval);
@@ -181,6 +185,20 @@
                         }
                     }
                 });
+            },
+            goTo:function(index){
+                var me=this;
+                if(me.power&&(index!=me.curIndex)){
+                    if(me.option.isAutoPlay){
+                        me.interval=clearInterval(me.interval);
+                    }
+                    me.leavIndex=me.curIndex;
+                    me.curIndex=index;
+                    me.open(me.curIndex,me.leavIndex);
+                    if(me.option.isAutoPlay){
+                        me.autoPlay();
+                    }
+                }
             }
         }
         return new Slide($(this[0]),opts);
@@ -338,6 +356,34 @@
                     opts.callBack();
                 });
             }
+        },
+        ShowMsg:function(options){
+            var defaults={
+                msg:" ",
+                waitTime:2000,
+                callBack:function(){}
+            };
+            var timeOut;
+            var opts = $.extend({}, defaults, options);
+            if($("#ShowMsgBox").length>0){
+                $("#ShowMsgBox").show();
+                $("#ShowMsgBox>.MsgBody").find("p").text(opts.msg);
+            }else{
+                var $msgBox=$("<div id='ShowMsgBox' class='Alter-box'></div>"),
+                    $msgBody=$("<div class='MsgBody'><div class='closeImg'></div></div>").appendTo($msgBox),
+                    $msg=$("<p>"+opts.msg+"</p>").appendTo($msgBody);
+                $msgBox.appendTo("body").hide().fadeIn(200);
+                $msgBody.find('.closeImg').on("click",function(){
+                    $("#ShowMsgBox").fadeOut(200,function(){$(this).remove()});
+                    opts.callBack();
+                    clearTimeout(timeOut);
+                })
+            }
+            timeOut=setTimeout(function(){
+                $("#ShowMsgBox").fadeOut(200,function(){$(this).remove()});
+                opts.callBack();
+                clearTimeout(timeOut);
+            },opts.waitTime)
         }
     }
-  })()
+})()

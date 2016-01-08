@@ -11,70 +11,71 @@
     <script src="js/plugDemo.js" type="text/javascript"></script>
 </head>
 <body>
-    <div class="body">
-        <h1>插件使用示例</h1>
-        <p class="title">1.轮播插件</p>
-        <div class="ss-slide" id="slidesBox" style="height: 300px">
-            <ul class="ss-content">
-                <li style="background-color: #ff932b"><span class="tag">1</span></li>
-                <li style="background-color: #8bb3ff"><span class="tag">2</span></li>
-                <li style="background-color: #ff758d"><span class="tag">3</span></li>
-                <li style="background-color: #8bb3ff"><span class="tag">4</span></li>
-            </ul>
+<div class="body">
+    <h1>插件使用示例</h1>
+    <p class="title">1.轮播插件</p>
+    <div class="ss-slide" style="height: 300px" id="slidesBox">
+        <ul class="ss-content">
+            <li style="background-color: #ff932b"><span class="tag">1</span></li>
+            <li style="background-color: #8bb3ff"><span class="tag">2</span></li>
+            <li style="background-color: #ff758d"><span class="tag">3</span></li>
+            <li style="background-color: #8bb3ff"><span class="tag">4</span></li>
+        </ul>
+    </div>
+    <p class="title">2.无缝滚动插件</p>
+    <div class="myscroll">
+        <ul class="autoScrollContent">
+            <li>
+                <span class="tagUserName">李****71</span>
+                <span class="PrizeName">iphone6 Plus</span>
+            </li>
+            <li>
+                <span class="tagUserName">李****712</span>
+                <span class="PrizeName">iphone6 Plus</span>
+            </li>
+            <li>
+                <span class="tagUserName">李****713</span>
+                <span class="PrizeName">iphone6 Plus</span>
+            </li>
+            <li>
+                <span class="tagUserName">李****714</span>
+                <span class="PrizeName">iphone6 Plus</span>
+            </li>
+            <li>
+                <span class="tagUserName">李****715</span>
+                <span class="PrizeName">iphone6 Plus</span>
+            </li>
+            <li>
+                <span class="tagUserName">李****716</span>
+                <span class="PrizeName">iphone6 Plus</span>
+            </li>
+        </ul>
+    </div>
+    <p class="title">3.选项卡</p>
+    <div class="tapBox">
+        <div class="tapHeader">
+            <a class="tapNav active" href="#card-1" data-point="card-1">标签1</a>
+            <a class="tapNav " href="#card-2" data-point="card-2">标签2</a>
+            <a class="tapNav " href="#card-3" data-point="card-3">标签3</a>
         </div>
-        <p class="title">2.无缝滚动插件</p>
-        <div class="myscroll">
-            <ul class="autoScrollContent">
-                <li>
-                    <span class="tagUserName">李****71</span>
-                    <span class="PrizeName">iphone6 Plus</span>
-                </li>
-                <li>
-                    <span class="tagUserName">李****712</span>
-                    <span class="PrizeName">iphone6 Plus</span>
-                </li>
-                <li>
-                    <span class="tagUserName">李****713</span>
-                    <span class="PrizeName">iphone6 Plus</span>
-                </li>
-                <li>
-                    <span class="tagUserName">李****714</span>
-                    <span class="PrizeName">iphone6 Plus</span>
-                </li>
-                <li>
-                    <span class="tagUserName">李****715</span>
-                    <span class="PrizeName">iphone6 Plus</span>
-                </li>
-                <li>
-                    <span class="tagUserName">李****716</span>
-                    <span class="PrizeName">iphone6 Plus</span>
-                </li>
-            </ul>
-        </div>
-        <p class="title">3.选项卡</p>
-        <div class="tapBox">
-            <div class="tapHeader">
-                <a class="tapNav active" href="#card-1" data-point="card-1">标签1</a>
-                <a class="tapNav " href="#card-2" data-point="card-2">标签2</a>
-                <a class="tapNav " href="#card-3" data-point="card-3">标签3</a>
+        <div class="tapBody">
+            <div class="tapItem" id="card-1">
+                <div class="testCard">选项卡内容1</div>
             </div>
-            <div class="tapBody">
-                <div class="tapItem" id="card-1">
-                   <div class="testCard">选项卡内容1</div>
-                </div>
-                <div class="tapItem" id="card-2">
-                    <div class="testCard">选项卡内容2</div>
-                </div>
-                <div class="tapItem" id="card-3">
-                    <div class="testCard">选项卡内容3</div>
-                </div>
+            <div class="tapItem" id="card-2">
+                <div class="testCard">选项卡内容2</div>
             </div>
-        </div>
-        <p class="title">4.弹出窗插件</p>
-        <div class="testAlterBox">
-            <a href="javascript:jQuery.AlterMsg({msg:'欢迎登陆本平台！！'})">弹出提示信息</a>
-            <a href="javascript:jQuery.AlterConfirm({title:'你确定该操作吗？',callBack:function(){console.log('你确认了该操作。')}})">弹出确认提示</a>
+            <div class="tapItem" id="card-3">
+                <div class="testCard">选项卡内容3</div>
+            </div>
         </div>
     </div>
+    <p class="title">4.弹出窗插件</p>
+    <div class="testAlterBox">
+        <a href="javascript:jQuery.AlterMsg({msg:'欢迎登陆本平台！！'})">弹出提示信息</a>
+        <a href="javascript:jQuery.AlterConfirm({title:'你确定该操作吗？',callBack:function(){console.log('你确认了该操作。')}})">弹出确认提示</a>
+        <a href="javascript:jQuery.ShowMsg({msg:'请登录后操作！'})">展示提示信息</a>
+    </div>
+</div>
 </body>
 </html>
