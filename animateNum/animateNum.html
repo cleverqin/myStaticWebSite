@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数字动画</title>
+    <script src="../resources/lib/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <style>
+        body,p{
+            padding: 0;
+            margin: 0;
+            background-color: #eee;
+        }
+        .btn-group{
+            padding: 20px;
+            text-align: center;
+        }
+        .box{
+            position: relative;
+            width: 240px;
+            height: 240px;
+            background-color: #00aba9;
+            margin: 0 auto;
+        }
+        .numberBox{
+            position: absolute;
+            width: 100px;
+            height: 190px;
+            left: 50%;
+            top:50%;
+            margin-left: -50px;
+            margin-top: -95px;
+        }
+        .bh{
+            display: block;
+            position: absolute;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+            top:0px;
+            left: 0px;
+            transition: all 0.5s;
+        }
+        .bh1{
+            height: 10px;
+            width: 100px;
+        }
+        .bh2{
+            height: 10px;
+            width: 100px;
+            top: 90px;
+        }
+        .bh3{
+            height: 10px;
+            width: 100px;
+            top: 180px;
+        }
+        .bh4{
+            height: 100px;
+            width: 10px;
+        }
+        .bh5{
+            height: 100px;
+            width: 10px;
+            top: 90px;
+        }
+        .bh6{
+            height: 100px;
+            width: 10px;
+            left: 90px;
+        }
+        .bh7{
+            height: 100px;
+            width: 10px;
+            top: 90px;
+            left: 90px;
+        }
+        /*******0*********/
+        [data-num='0'] .bh2{
+            top:0;
+        }
+        /*******1*********/
+        [data-num='1'] .bh1,[data-num='1'] .bh2,[data-num='1'] .bh3{
+            top: 0px;
+            opacity: 0;
+        }
+        [data-num='1'] .bh4,[data-num='1'] .bh5{
+            left: 90px;
+            opacity: 0;
+        }
+        /*******0*********/
+        [data-num='2'] .bh4{
+            left: 90px;
+            opacity: 0;
+        }
+        [data-num='2'] .bh7{
+            left: 0px;
+            opacity: 0;
+        }
+        /*******3*********/
+        [data-num='3'] .bh4{
+            left: 90px;
+            opacity: 0;
+        }
+        [data-num='3'] .bh5{
+            left: 90px;
+            opacity: 0;
+        }
+        /*******4*********/
+        [data-num='4'] .bh1,[data-num='4'] .bh3{
+            opacity: 0;
+            top: 90px;
+        }
+        [data-num='4'] .bh5{
+            opacity: 0;
+            left: 90px;
+        }
+        /*******5*********/
+        [data-num='5'] .bh6{
+            left: 0px;
+            opacity: 0;
+        }
+        [data-num='5'] .bh5{
+            left: 90px;
+            opacity: 0;
+        }
+        /*******6*********/
+        [data-num='6'] .bh6{
+            left: 0px;
+            opacity: 0;
+        }
+        /*******7*********/
+        [data-num='7'] .bh2,[data-num='7'] .bh3{
+            top: 0px;
+            opacity: 0;
+        }
+        [data-num='7'] .bh4,[data-num='7'] .bh5{
+            left: 90px;
+            opacity: 0;
+        }
+        /*******8*********/
+
+        /********9*********/
+        [data-num='9'] .bh5{
+            left: 90px;
+            opacity: 0;
+        }
+        /************************/
+        .circle{
+            display: block;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #f1f1f1;
+            left: 50%;
+            margin-left: -10px;
+            top: 150px;
+            border-radius: 10px;
+        }
+        .numberBox .circle:first-child{
+            top: 50px;
+        }
+        /**************************************/
+        .bh1{
+            background-color: #f0f16d;
+        }
+        .bh2{
+            background-color: #f18866;
+        }
+        .bh3{
+            background-color: #f15aa5;
+        }
+        .bh4{
+            background-color: #b81df1;
+        }
+        .bh5{
+            background-color: #04b7f1;
+        }
+        .bh6{
+            background-color: #0afff7;
+        }
+        .bh7{
+            background-color: #a6f108;
+        }
+        /******************************************/
+        .DateRow{
+            display: block;
+            padding: 0;
+            list-style: none;
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .DateRow>li{
+            float: left;
+            position: relative;
+            width: 150px;
+            height: 240px;
+            background-color: #00aba9;
+        }
+        .DateRow:after{
+            display: table;
+            content: "";
+            clear: both;
+        }
+    </style>
+
+</head>
+<body>
+<div class="content">
+    <div class="box">
+        <div class="numberBox" data-num="8">
+            <div class="bh1 bh"></div>
+            <div class="bh2 bh"></div>
+            <div class="bh3 bh"></div>
+            <div class="bh4 bh"></div>
+            <div class="bh5 bh"></div>
+            <div class="bh6 bh"></div>
+            <div class="bh7 bh"></div>
+        </div>
+    </div>
+    <div class="btn-group">
+        <button type="button" data-num="0">显示数字0</button>
+        <button type="button" data-num="1">显示数字1</button>
+        <button type="button" data-num="2">显示数字2</button>
+        <button type="button" data-num="3">显示数字3</button>
+        <button type="button" data-num="4">显示数字4</button>
+        <button type="button" data-num="5">显示数字5</button>
+        <button type="button" data-num="6">显示数字6</button>
+        <button type="button" data-num="7">显示数字7</button>
+        <button type="button" data-num="8">显示数字8</button>
+        <button type="button" data-num="9">显示数字9</button>
+    </div>
+    <ul class="DateRow">
+        <li>
+            <div class="numberBox" data-num="8" id="hour">
+                <div class="bh1 bh"></div>
+                <div class="bh2 bh"></div>
+                <div class="bh3 bh"></div>
+                <div class="bh4 bh"></div>
+                <div class="bh5 bh"></div>
+                <div class="bh6 bh"></div>
+                <div class="bh7 bh"></div>
+            </div>
+        </li>
+        <li>
+            <div class="numberBox" data-num="8" id="hour1">
+                <div class="bh1 bh"></div>
+                <div class="bh2 bh"></div>
+                <div class="bh3 bh"></div>
+                <div class="bh4 bh"></div>
+                <div class="bh5 bh"></div>
+                <div class="bh6 bh"></div>
+                <div class="bh7 bh"></div>
+            </div>
+        </li>
+        <li>
+            <div class="numberBox">
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </li>
+        <li>
+            <div class="numberBox" data-num="8" id="minutes">
+                <div class="bh1 bh"></div>
+                <div class="bh2 bh"></div>
+                <div class="bh3 bh"></div>
+                <div class="bh4 bh"></div>
+                <div class="bh5 bh"></div>
+                <div class="bh6 bh"></div>
+                <div class="bh7 bh"></div>
+            </div>
+        </li>
+        <li>
+            <div class="numberBox" data-num="8" id="minutes1">
+                <div class="bh1 bh"></div>
+                <div class="bh2 bh"></div>
+                <div class="bh3 bh"></div>
+                <div class="bh4 bh"></div>
+                <div class="bh5 bh"></div>
+                <div class="bh6 bh"></div>
+                <div class="bh7 bh"></div>
+            </div>
+        </li>
+        <li>
+            <div class="numberBox">
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </li>
+        <li>
+            <div class="numberBox" data-num="8" id="seconds">
+                <div class="bh1 bh"></div>
+                <div class="bh2 bh"></div>
+                <div class="bh3 bh"></div>
+                <div class="bh4 bh"></div>
+                <div class="bh5 bh"></div>
+                <div class="bh6 bh"></div>
+                <div class="bh7 bh"></div>
+            </div>
+        </li>
+        <li>
+            <div class="numberBox" data-num="8" id="seconds1">
+                <div class="bh1 bh"></div>
+                <div class="bh2 bh"></div>
+                <div class="bh3 bh"></div>
+                <div class="bh4 bh"></div>
+                <div class="bh5 bh"></div>
+                <div class="bh6 bh"></div>
+                <div class="bh7 bh"></div>
+            </div>
+        </li>
+    </ul>
+    <script>
+        document.body.onload=function(){
+            var numBox=document.body.querySelector(".numberBox");
+            var buttons=document.body.querySelectorAll("button");
+            for(var i=0;i<buttons.length;i++){
+                buttons[i].addEventListener("click",function(){
+                    var index=this.getAttribute("data-num");
+                    numBox.setAttribute("data-num",index);
+                })
+            }
+        }
+        $(function(){
+            setInterval(function(){
+                var Now=new Date();
+                var hour=Now.getHours().toString();
+                var minutes=Now.getMinutes().toString();
+                var scends=Now.getSeconds().toString();
+                if(hour.length<2){
+                    $("#hour").attr("data-num",0);
+                    $("#hour1").attr("data-num",hour);
+                }else{
+                    $("#hour").attr("data-num",hour[0]);
+                    $("#hour1").attr("data-num",hour[1]);
+                }
+                if(minutes.length<2){
+                    $("#minutes").attr("data-num",0);
+                    $("#minutes1").attr("data-num",minutes);
+                }else{
+                    $("#minutes").attr("data-num",minutes[0]);
+                    $("#minutes1").attr("data-num",minutes[1]);
+                }
+                if(scends.length<2){
+                    $("#seconds").attr("data-num",0);
+                    $("#seconds1").attr("data-num",scends);
+                }else{
+                    $("#seconds").attr("data-num",scends[0]);
+                    $("#seconds1").attr("data-num",scends[1]);
+                }
+            },1000)
+
+        })
+    </script>
+</div>
+<div class="content">
+    <!--CSS3 翻纸牌-->
+    <style>
+        #cardflip{
+            width: 200px;
+            height: 260px;
+            position: relative;
+            margin: 60px auto;
+            border: 1px solid #CCC;
+            -webkit-perspective: 200px;
+            -moz-perspective: 200px;
+            perspective: 200px;
+        }
+        #card1{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            -webkit-perspective: -1000px;
+            -moz-perspective: -1000px;
+            perspective: -1000px;
+            -webkit-transition: -webkit-transform 1s;
+            -moz-transition: -moz-transform 1s;
+            -o-transition: -o-transform 1s;
+            transition: transform 1s;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        #card1 .front {
+            height: 100%;
+            background-color: #e74c3c;
+        }
+        #card1 .back {
+            background-color: #3498db;
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+        #card1 { transform-origin: left center; }
+        #card1.flipped{
+            -webkit-transform: translateX(100%) rotateY(180deg);
+            -moz-transform: translateX(100%) rotateY(180deg);
+            -o-transform: translateX(100%) rotateY(180deg);
+            transform: translateX(100%) rotateY(180deg);
+        }
+        #card1 div, #card2 div {
+            height: 100%;
+            width: 100%;
+            line-height: 260px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: 140px;
+            position: absolute;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+    </style>
+    <div class="demo">
+        <div id="cardflip">
+            <div id="card1">
+                <div class="front">1</div>
+                <div class="back">2</div>
+            </div>
+        </div>
+        <!--js-->
+        <script>
+            setInterval("autoTrans()",1000);
+            transferCard();
+            function transferCard(){
+                $("#card1").click(function(){
+                    var $this=$(this);
+                    if($this.hasClass("flipped")){
+                        $this.removeClass("flipped");
+                    }else{
+                        $this.addClass("flipped");
+                    }
+                })
+            }
+            function autoTrans(){
+                var $card=$("#card1");
+                if($card.hasClass("flipped")){
+                    $card.removeClass("flipped");
+                }else{
+                    $card.addClass("flipped");
+                }
+            }
+        </script>
+    </div>
+    <!--CSS3 立方体-->
+    <style>
+        #cube-con {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 40px auto 40px;
+            -webkit-perspective:1000px;
+            -moz-perspective:1000px;
+            perspective:1000px;
+        }
+        #cube {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            -webkit-transform-style:preserve-3d;
+            transform-style:preserve-3d;
+            -webkit-transition:-webkit-transform 0.5s;
+            -moz-transition:-moz-transform 0.5s;
+            -o-transition:-o-transform 0.5s;
+            transition:transform 0.5s;
+            -webkit-transform:translateZ( -100px );
+            -moz-transform:translateZ( -100px );
+            -o-transform:translateZ( -100px );
+            transform:translateZ( -100px );
+        }
+
+        #cube figure {
+            padding: 0;
+            margin: 0;
+            width:196px;
+            height:196px;
+            display:block;
+            position:absolute;
+            border:2px solid black;
+            color:#fff;
+            font-size:130px;
+            font-weight:bold;
+            text-align:center;
+            line-height:190px;
+            opacity:0.8;
+        }
+
+        #cube .front {
+            background:#1abc9c;
+            -webkit-transform:rotateY(0deg) translateZ(100px);
+            -moz-transform:rotateY(0deg) translateZ(100px);
+            -o-transform:rotateY(0deg) translateZ(100px);
+            transform:rotateY(0deg) translateZ(100px);
+        }
+        #cube .back {
+            background:#3498db;
+            -webkit-transform:rotateX(180deg) translateZ(100px);
+            -moz-transform:rotateX(180deg) translateZ(100px);
+            -o-transform:rotateX(180deg) translateZ(100px);
+            transform:rotateX(180deg) translateZ(100px);
+        }
+        #cube .right {
+            background:#8e44ad;
+            -webkit-transform:rotateY(90deg) translateZ(100px);
+            -moz-transform:rotateY(90deg) translateZ(100px);
+            -o-transform:rotateY(90deg) translateZ(100px);
+            transform:rotateY(90deg) translateZ(100px);
+        }
+        #cube .left {
+            background:#34495e;
+            -webkit-transform:rotateY(-90deg) translateZ(100px);
+            -moz-transform:rotateY(-90deg) translateZ(100px);
+            -o-transform:rotateY(-90deg) translateZ(100px);
+            transform:rotateY(-90deg) translateZ(100px);
+        }
+        #cube .top {
+            background:#f39c12;
+            -webkit-transform:rotateX(90deg) translateZ(100px);
+            -moz-transform:rotateX(90deg) translateZ(100px);
+            -o-transform:rotateX(90deg) translateZ(100px);
+            transform:rotateX(90deg) translateZ(100px);
+        }
+        #cube .bottom {
+            background:#c0392b;
+            -webkit-transform:rotateX(-90deg) translateZ(100px);
+            -moz-transform:rotateX(-90deg) translateZ(100px);
+            -o-transform:rotateX(-90deg) translateZ(100px);
+            transform:rotateX(-90deg) translateZ(100px);
+        }
+
+        #cube.show-front {
+            -webkit-transform:translateZ(-100px);
+            -moz-transform:translateZ(-100px);
+            -o-transform:translateZ(-100px);
+            transform:translateZ(-100px);
+        }
+        #cube.show-back {
+            -webkit-transform:translateZ(-100px) rotateX(-180deg);
+            -moz-transform:translateZ(-100px) rotateX(-180deg);
+            -o-transform:translateZ(-100px) rotateX(-180deg);
+            transform:translateZ(-100px) rotateX(-180deg);
+        }
+        #cube.show-right {
+            -webkit-transform:translateZ(-100px) rotateY(-90deg);
+            -moz-transform:translateZ(-100px) rotateY(-90deg);
+            -o-transform:translateZ(-100px) rotateY(-90deg);
+            transform:translateZ(-100px) rotateY(-90deg);
+        }
+        #cube.show-left {
+            -webkit-transform:translateZ(-100px) rotateY(90deg);
+            -moz-transform:translateZ(-100px) rotateY(90deg);
+            -o-transform:translateZ(-100px) rotateY(90deg);
+            transform:translateZ(-100px) rotateY(90deg);
+        }
+        #cube.show-top {
+            -webkit-transform:translateZ(-100px) rotateX(-90deg);
+            -moz-transform:translateZ(-100px) rotateX(-90deg);
+            -o-transform:translateZ(-100px) rotateX(-90deg);
+            transform:translateZ(-100px) rotateX(-90deg);
+        }
+        #cube.show-bottom {
+            -webkit-transform:translateZ(-100px) rotateX(90deg);
+            -moz-transform:translateZ(-100px) rotateX(90deg);
+            -o-transform:translateZ(-100px) rotateX(90deg);
+            transform:translateZ(-100px) rotateX(90deg);
+        }
+
+        #cube-btn, #car-btn{
+            margin:40px auto 60px;
+            text-align:center;
+        }
+        #cube-btn button, #car-btn button{
+            padding:5px 8px;
+            margin-right:8px;
+            margin-bottom:20px;
+        }
+
+        #caro-con{
+            width: 210px;
+            height: 140px;
+            position: relative;
+            margin: 60px auto 40px;
+            border: 1px solid #CCC;
+            -webkit-perspective:1100px;
+            -moz-perspective:1100px;
+            perspective:1100px;
+        }
+        #cube { transform: translateZ( -100px ); }
+    </style>
+    <div class="demo">
+        <section id="cube-con">
+            <div id="cube" class="show-front">
+                <figure class="front">1</figure>
+                <figure class="back">2</figure>
+                <figure class="right">3</figure>
+                <figure class="left">4</figure>
+                <figure class="top">5</figure>
+                <figure class="bottom">6</figure>
+            </div>
+        </section>
+        <div id="cube-btn">
+            <button data-class="show-front">Show Front</button>
+            <button data-class="show-back">Show Back</button>
+            <button data-class="show-right">Show Right</button>
+            <button data-class="show-left">Show Left</button>
+            <button data-class="show-top">Show Top</button>
+            <button data-class="show-bottom">Show Bottom</button>
+        </div>
+        <script>
+            var lastIndex=0;
+            clickCtrl();
+            function clickCtrl(){
+                $("#cube-btn button").click(function(){
+                    var Class=$(this).attr("data-class");
+                    $("#cube").removeClass().addClass(Class);
+                })
+            }
+            function GetRandomNum(Min,Max){
+                var Range = Max - Min;
+                var Rand = Math.random();
+                return(Min + Math.round(Rand * Range));
+            }
+            setInterval("autoAnimation()",500);
+            function autoAnimation(){
+                var index=GetRandomNum(0,5);
+                if(index==lastIndex){
+                    if(index<5){
+                        index=index+1;
+                    }else{
+                        index=index+1;
+                    }
+                }
+                var ClassList=["show-front","show-back","show-right","show-left","show-top","show-bottom"];
+                $("#cube").removeClass().addClass(ClassList[index]);
+                lastIndex=index;
+            }
+        </script>
+    </div>
+    <!--文字效果-->
+</div>
+</body>
+</html>
