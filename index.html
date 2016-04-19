@@ -6,8 +6,9 @@
     <link rel="shortcut icon" type="image/ico" href="resources/favicon.ico" />
     <title>欢迎来到我的网站,在这里我们共同分享知识与快乐！</title>
     <link href="css/index.css" rel="stylesheet"/>
+    <link href="css/swiper.min.css" rel="stylesheet"/>
     <script src="resources/lib/jquery-1.8.3.min.js" type="text/javascript"></script>
-    <script src="privatePlug-in/js/plug-ins.js" type="text/javascript"></script>
+    <script src="swiper-3.0.8/js/swiper.min.js" type="text/javascript"></script>
     <script src="js/index.js" type="text/javascript"></script>
 </head>
 <body>
@@ -30,16 +31,23 @@
 </div>
 <section class="content">
     <div class="slideBox">
-        <div class="ss-slide" id="slidesBox">
-            <ul class="ss-content">
-                <li><img src="resources/banner/banner01.png"/></li>
-                <li><img src="resources/banner/banner02.png"></li>
-                <li><img src="resources/banner/banner03.png"></li>
-                <li><img src="resources/banner/banner04.png"></li>
-                <li><img src="resources/banner/banner05.png"></li>
-                <li><img src="resources/banner/banner06.png"></li>
-            </ul>
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="resources/banner/banner01.png"/></div>
+                <div class="swiper-slide"><img src="resources/banner/banner02.png"/></div>
+                <div class="swiper-slide"><img src="resources/banner/banner03.png"/></div>
+                <div class="swiper-slide"><img src="resources/banner/banner04.png"/></div>
+                <div class="swiper-slide"><img src="resources/banner/banner05.png"/></div>
+                <div class="swiper-slide"><img src="resources/banner/banner06.png"/></div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
+        <!-- Swiper JS -->
     </div>
     <div class="sectionBox">
         <div class="sectionTitle">1.好文推荐</div>
@@ -103,10 +111,8 @@
             <li>
                 <div class="contactMeBox">
                     <p class="title">联系我</p>
-                    <p class="tag">QQ邮箱:</p>
-                    <p>705597001@qq.com</p>
-                    <p class="tag">手机:</p>
-                    <p>15238****27</p>
+                    <p class="tag">邮箱:<a href="#">705597001@qq.com</a></p>
+                    <p class="tag">手机:<a href="#">15238****27</a></p>
                 </div>
             </li>
             <li>
