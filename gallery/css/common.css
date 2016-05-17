@@ -1,0 +1,158 @@
+@charset "utf-8";
+html, body,iframe,
+h1, h2, h3, h4, h5, h6, p,ol, ul ,form,dl ,dd,td,input,table,tr{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei", SimHei, "Microsoft JhengHei", "STHeiti ";
+}
+img{
+    border: none;
+}
+/* HTML5 display-role reset for older browsers */
+article,footer, header, menu, nav, section {
+    display: block;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a{ text-decoration:none;outline:none;}
+/************tools css************/
+/****定义有边框的表格*****/
+.border-table{
+    border-collapse: separate;
+    width: 100%;
+    border: 1px solid #999;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.border-table td{
+    border-style:solid;
+    border-width:1px 0px 0px 1px;
+    border-color: #999;
+}
+.border-table tr:first-child td{
+    border-top: none;
+}
+.border-table tr td:first-child{
+    border-left:none;
+}
+/****清除浮动*****/
+.clearFix:before,.clearFix:after,.content:after{
+    content:"";display:table;
+}
+.clearFix:after,.content:after{
+    clear:both
+}
+.clearFix{*zoom:1}
+/******多列布局********/
+.row:after{
+    display: table;
+    clear: both;
+    content:"";
+}
+.row>[class*="col-"],.row>li{
+    float: left;
+}
+/********表单样式*******/
+form .form-group:after{
+    display: table;
+    clear: both;
+    content:"";
+}
+form .form-group{
+    margin-top: 15px;
+}
+form .form-group:first-child{
+    margin-top: 0px;
+}
+form .form-group .form-label{
+    display: block;
+    float: left;
+
+}
+form .form-group .input-box{
+
+}
+/*************************************************************/
+html,body{
+    background-color: #ddd;
+    width: 100%;
+    height: 100%;
+}
+.flipper{
+    position: relative;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+}
+.flipper .front,.flipper .back ,.flip-card{
+    position: absolute;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 280px;
+}
+.flipper .front{
+    z-index: 2;
+}
+.flipper .back{
+    transform: rotateY(180deg);
+}
+.flip-card.hover .flipper{
+    transform: rotateY(180deg);
+}
+.flip-card .flipper{
+    perspective: 1000px;
+}
+.front{
+    background-color: #fff;
+}
+.front img{
+    display:block;
+    margin: 20px;
+    width: 240px;
+    height: 240px;
+}
+.back{
+    text-align: center;
+    background-color: #fff;
+}
+.back p{
+    color: #666666;
+    font-size: 14px;
+    margin: 20px;
+    line-height: 26px;
+    text-align: left;
+}
+.flip-card{
+    position: absolute;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+.flip-card.center{
+    left: 50% !important;
+    margin-left: -140px;
+    top:50% !important;
+    margin-top: -140px;
+    -webkit-transform: rotate(0deg) !important;
+    -moz-transform: rotate(0deg) !important;
+    -ms-transform: rotate(0deg) !important;
+    -o-transform: rotate(0deg) !important;
+    transform: rotate(0deg) !important;
+    z-index:10;
+}
+.flip-card.hover{
+    z-index: 10;
+}
+.stage{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
