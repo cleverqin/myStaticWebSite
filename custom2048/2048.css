@@ -8,7 +8,7 @@ header{
 
 header h1{
     font-family:Arial;
-    font-size:40px;
+    font-size:20px;
     font-weight:bold;
 }
 
@@ -33,13 +33,13 @@ header #newgamebutton:hover{
 header p{
     font-family:Arial;
     font-size:25px;
-    margin:20px auto;
+    margin:10px auto;
 }
 
 #grid-container{
     width: 98%;
 
-    margin:50px auto;
+    margin:20px auto;
     background-color:#bbada0;
 
     border-radius: 10px;

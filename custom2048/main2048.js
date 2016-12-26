@@ -176,14 +176,15 @@ $(document).keydown( function( event ){
             break;
     }
 });
-document.addEventListener('touchstart',function(event){
+var content=document;
+content.addEventListener('touchstart',function(event){
     startx = event.touches[0].pageX;
     starty = event.touches[0].pageY;
 });
-document.addEventListener('touchmove',function(event){
+content.addEventListener('touchmove',function(event){
     event.preventDefault();
 });
-document.addEventListener('touchend',function(event){
+content.addEventListener('touchend',function(event){
     endx = event.changedTouches[0].pageX;
     endy = event.changedTouches[0].pageY;
     var ismove=0.3*documentWidth;
