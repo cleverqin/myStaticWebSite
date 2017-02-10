@@ -1,16 +1,16 @@
 // JavaScript Document
 
 
- 	var v = new Array();  
-    var vs = "10X98765432";  
-    var newCardID = "";    
+
   function checkCardID(cardID15) {
-         v.push(2, 4, 8, 5, 10, 9, 7, 3, 6, 1, 2, 4, 8, 5, 10, 9, 7);  
+      var v = new Array();
+      var vs = "10X98765432";
+      var newCardID = "";
+      v.push(2, 4, 8, 5, 10, 9, 7, 3, 6, 1, 2, 4, 8, 5, 10, 9, 7);
          var cardID = cardID15; 
 		 var Eaxe=/^\d{15}$/;
         var msg="";
-         if(cardID.length!=15&&!Eaxe.test(cardID))  
-        { 
+         if(cardID.length!=15&&!Eaxe.test(cardID)){
             msg="请输入正确的身份证号";
             return;  
         }  
@@ -24,9 +24,8 @@
        if(!checkDay(year,month,day)) {
            msg="身份证出生日期不正确";
            return;
-       }  
-     //alert(checkDay(year,month,day));  
-    //��15λ�ĺ���ת��λ17λ  
+       }
+    //将15位身份证号转换为18位
     var cardID17 = cardID.substring(0,6)+"19"+cardID.substring(6);  
     var N = 0;  
     var R = -1;  
@@ -44,6 +43,7 @@
     newCardID = cardID18;
 	return newCardID;
 }
+//校验月是否正确
 function checkMonth(month)  
 {  
     if(month<1||month>12)  
@@ -52,6 +52,7 @@ function checkMonth(month)
     }  
     return true;  
 }
+//校验天是否正确
 function checkDay(year,month,day)  
 {  
     var Mday = 0;  
@@ -77,8 +78,8 @@ function checkDay(year,month,day)
     }  
     return true;  
 }
-function isLeapYear(year)  
-{  
+//判断是否是润年
+function isLeapYear(year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0) ? 29 : 28;  
 }
   function  validIDcard (IDCode){
@@ -96,7 +97,6 @@ function isLeapYear(year)
      }else if(IDCode.length==15){
         var Newcode=checkCardID(IDCode);
         IDcode18=Newcode;
-        console.log(Newcode);
         var obj=IdentityCodeValid(Newcode);
         ReObj.pass=obj.pass;
         ReObj.sex=obj.sex;
@@ -117,7 +117,7 @@ function IdentityCodeValid(code) {
         45:"����",46:"����",50:"����",51:"�Ĵ�",52:"����",53:"����",54:"���� ",61:"����",62:"����",63:"�ຣ",64:"����",
         65:"�½�",71:"̨��",81:"���",82:"����",91:"���� "};
     var tip = "";
-    var sex=""
+    var sex="";
     var pass= true;
     var _num=code.substr(0,17);
     var obj={pass:true,sex:"",msg:""}
@@ -128,30 +128,39 @@ function IdentityCodeValid(code) {
         tip = "身份证省市码不存在";
         pass = false;
     } else{
-        if(code.length == 18){
-            code = code.split('');
-            var factor = [ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 ];
-            var parity = [ 1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2 ];
-            var sum = 0;
-            var ai = 0;
-            var wi = 0;
-            for (var i = 0; i < 17; i++) {
-                ai = code[i];
-                wi = factor[i];
-                sum += ai * wi;
-                if(i==16&&parseInt(_num.charAt(i))%2==0){
-                    sex="女";
-                }else{
-                    sex="男";
-                }
+        if(isPassPower(code)){
+            if(parseInt(_num.charAt(16))%2==0){
+                sex="女";
+            }else{
+                sex="男";
             }
-            var last = parity[sum % 11];
-            if(last!= code[17]){
-                tip = "身份证校验码错误";
-                pass =false;
-            }
+        }else {
+            pass=false;
+            tip="身份证校验码错误";
         }
     }
     obj.pass=pass;obj.sex=sex;obj.msg=tip;
     return obj;
+}
+//判断18位身份证最后一位校验码是否正确
+function isPassPower(code) {
+      var flag=false;
+    if(code.length == 18){
+        code = code.split('');
+        var factor = [ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 ];
+        var parity = [ 1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2 ];
+        var sum = 0;
+        var ai = 0;
+        var wi = 0;
+        for (var i = 0; i < 17; i++) {
+            ai = code[i];
+            wi = factor[i];
+            sum += ai * wi;
+        }
+        var last = parity[sum % 11];
+        if(last== code[17]){
+           flag=true;
+        }
+    }
+    return flag;
 }
