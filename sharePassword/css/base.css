@@ -1,0 +1,63 @@
+@charset "utf-8";
+html, body, iframe,
+h1, h2, h3, h4, h5, h6, p, ol, ul, form, dl, dd, td, input, table, tr {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei", SimHei, "Microsoft JhengHei", "STHeiti ";
+    font-size: 14px;
+}
+
+img {
+    border: none;
+}
+
+input[type='button'], input[type='submit'], input[type='reset'], button {
+    cursor: pointer;
+    outline: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, footer, header, menu, nav, section {
+    display: block;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+/************************************/
+body{background: #eee;}
+.nav-content{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.vi-content{
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+}
+.search-form{
+    padding: 20px;
+}
+.table-box{
+    padding: 0 20px 20px;
+}
+.add-form .el-dialog{
+    max-width: 450px;
+}
+.add-form input{
+    width: 300px;
+}
+.page-block .el-pagination{
+    padding: 10px;
+    text-align: right;
+}
