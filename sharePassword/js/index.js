@@ -120,16 +120,16 @@ const app = new Vue({
             })
         },
         submitAddForm:function (formName) {
+            var _this=this;
             this.$refs[formName].validate(function (valid){
                 if (valid) {
-                    this.formInline.bikeNo="";
-                    this.addForm.v_id=Store.S4();
-                    this.addForm.addDate=new Date().Format("yyyy-MM-dd hh:mm:ss");
-                    var newNode=JSON.parse(JSON.stringify(this.addForm));
-                    this.tableData.push(newNode);
-                    Store.save(this.tableData);
-                    this.dialogFormVisible=false;
-                    this.$message({
+                    _this.addForm.v_id=Store.S4();
+                    _this.addForm.addDate=new Date().Format("yyyy-MM-dd hh:mm:ss");
+                    var newNode=JSON.parse(JSON.stringify(_this.addForm));
+                    _this.tableData.push(newNode);
+                    Store.save(_this.tableData);
+                    _this.dialogFormVisible=false;
+                    _this.$message({
                         type: 'success',
                         message: '添加成功！'
                     });
@@ -140,20 +140,20 @@ const app = new Vue({
             });
         },
         submitEditForm:function (formName) {
+            var _this=this;
             this.$refs[formName].validate(function(valid) {
                 if (valid) {
-                    this.formInline.bikeNo="";
-                    var newNode=JSON.parse(JSON.stringify(this.editForm));
-                    this.tableData.forEach(function (item) {
+                    var newNode=JSON.parse(JSON.stringify(_this.editForm));
+                    _this.tableData.forEach(function (item) {
                         if(item.v_id==newNode.v_id){
                             item.type=newNode.type;
                             item.bikeNo=newNode.bikeNo;
                             item.bikePassword=newNode.bikePassword;
                         }
                     })
-                    this.dialogFormVisible1=false;
+                    _this.dialogFormVisible1=false;
                     Store.save(this.tableData);
-                    this.$message({
+                    _this.$message({
                         type: 'success',
                         message: '修改成功！'
                     });
