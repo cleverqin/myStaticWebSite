@@ -1,8 +1,7 @@
 var KEY="SHARE-LIST";
 var  Store={
     fetch:function () {
-        return JSON.parse(window.localStorage.getItem(KEY)||
-            "[]")
+        return JSON.parse(window.localStorage.getItem(KEY)||"[]")
     },
     save:function (list) {
         window.localStorage.setItem(KEY,JSON.stringify(list))

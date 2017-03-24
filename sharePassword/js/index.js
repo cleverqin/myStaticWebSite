@@ -98,22 +98,22 @@ const app = new Vue({
             this.editForm.bikePassword=row.bikePassword;
         },
         handleDelete:function($index, row) {
+            var _this=this;
             this.$confirm('你确定要删除该条记录吗?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(function(){
-                this.formInline.bikeNo="";
                 var newTableData=Store.fetch();
                 newTableData.forEach(function (index,item) {
                     if(item.bikeNo==row.bikeNo){
                         $index=index;
                     }
                 });
-                this.tableData=newTableData;
-                this.tableData.splice($index,1);
+                _this.tableData=newTableData;
+                _this.tableData.splice($index,1);
                 Store.save(this.tableData);
-                this.$message({
+                _this.$message({
                     type: 'success',
                     message: '删除成功!'
                 });
