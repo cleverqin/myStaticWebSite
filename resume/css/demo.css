@@ -61,7 +61,7 @@ body{
     content: "";
 }
 .list-item{
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ffffff;
     padding: 10px 20px;
 }
  li.none-border{
@@ -92,10 +92,10 @@ body{
     text-align: center;
     line-height: 32px;
     font-size: 15px;
-    color: #848484;
+    color: #ffffff;
 }
 .express-title .company{
-    color: #1c8de0;
+    color: #22a3ff;
     font-weight: bold;
 }
 .express-title .time{
@@ -108,11 +108,11 @@ body{
 .express-body p{
     font-size: 15px;
     line-height: 25px;
-    color: #888;
+    color: #ffffff;
 }
 .express-item{
     padding: 15px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ffffff;
 }
 /*****************************/
 .person-list{
@@ -121,16 +121,16 @@ body{
 .person-list .person-item{
     line-height: 25px;
     font-size: 15px;
-    color: #848484;
+    color: #ffffff;
     padding: 0 10px;
 }
 .person-list .item-title{
     line-height: 32px;
     font-size: 15px;
-    color: #848484;
+    color: #ffffff;
     font-weight: bold;
     padding: 0px 20px;
-    border-bottom: 2px solid #b3b3b3;
+    border-bottom: 2px solid #ffffff;
     margin-bottom: 10px;
 }
 /***************************************/
@@ -164,23 +164,30 @@ body{
 
 /***********************************/
 .swiper-slide:nth-child(1){
-background: rgba(28, 141, 224, 0.13);
+    background:url("../img/bg01.jpg") no-repeat center;
+    background-size: 100% 100%;
 }
 .swiper-slide:nth-child(2){
-    background: rgba(121, 224, 176, 0.31);
+    background:url("../img/bg02.jpg") no-repeat center;
+    background-size: 100% 100%;
 }
 .swiper-slide:nth-child(3){
-    background: rgba(224, 136, 101, 0.42);
+    background:url("../img/bg03.jpg") no-repeat center;
+    background-size: 100% 100%;
 }
 .swiper-slide:nth-child(4){
-    background: rgba(216, 224, 183, 0.37);
+    background:url("../img/bg04.jpg") no-repeat center;
+    background-size: 100% 100%;
 }
 .swiper-slide:nth-child(5){
-    background: rgba(224, 151, 184, 0.39);
+    background:url("../img/bg05.jpg") no-repeat center;
+    background-size: 100% 100%;
 }
 .swiper-slide:nth-child(6){
-    background: rgba(244, 97, 96, 0.27);
+    background:url("../img/bg06.jpg") no-repeat center;
+    background-size: 100% 100%;
 }
 .swiper-slide:nth-child(7){
-    background: rgba(179, 179, 179, 0.19);
+    background:url("../img/bg07.jpg") no-repeat center;
+    background-size: 100% 100%;
 }
