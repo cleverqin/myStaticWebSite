@@ -198,3 +198,34 @@ section{
 .slideBox{
     padding-top: 10px;
 }
+/*****************************************/
+.navItem{
+    width: 120px;
+    height: 60px;
+    background-color: #eee;
+    margin-left:10px;
+    margin-bottom:10px;
+}
+.navItem a{
+    display:block;
+
+    padding:10px;
+}
+.navItem a .main-title{
+    font-size:16px;
+    line-height:20px;
+    color: #45B6F7;
+    font-weight: bold;
+    overflow: hidden;
+    height:20px;
+}
+.navItem a .fit-title{
+    height:20px;
+    line-height:20px;
+    font-size:14px;
+    color: #908e8e;
+    overflow: hidden;
+}
+.navItem:hover{
+    background-color: #dddddd;
+}
