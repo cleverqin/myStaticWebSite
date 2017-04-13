@@ -13,7 +13,7 @@
             {title:'手机归属地查询',url:'https://tcc.taobao.com/cc/json/mobile_tel_segment.htm',key:'phone',data:[{title:'手机号码',name:'tel',value:'13666666666'}]},
             {title:'百度音乐搜索',url:'http://tingapi.ting.baidu.com/v1/restserver/ting/',key:'ting',data:[{title:'搜索关键词',name:'query',value:'爱'}, {title:'默认值 无需修改',name:'method',value:'baidu.ting.search.common',readonly:!0}]},
             {title:'网易音乐信息',url:'http://api.asilu.com/163music/',key:'163music',data:[{title:'类型',name:'type',value:'song',desc:"可查询类型{song:'歌曲',album:'专辑',userlist:'用户',playlist:'播放列表',songlrc:'歌词'}"},{title:'ID',name:'id',value:'34125023'}]},
-            {title:'豆瓣信息获取',url:'http://api.asilu.com/douban/',key:'douban',data:[{title:'ID 类型',name:'type',value:{doulist:'豆列',movie:'视频',music:'音乐',photo_album:'相册',book:'图书'},desc:'可查询 ID 类型'},{title:'ID',name:'id',value:'45195492'}]}]};
+            {title:'豆瓣信息获取',url:'http://api.asilu.com/douban/',key:'douban',data:[{title:'ID 类型',name:'type',value:'doulist',desc:"可查询 ID 类型{doulist:'豆列',movie:'视频',music:'音乐',photo_album:'相册',book:'图书'}"},{title:'ID',name:'id',value:'45195492'}]}]};
     new Vue({
         el:"#app",
         data:function() {
