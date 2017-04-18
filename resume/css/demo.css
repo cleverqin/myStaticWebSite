@@ -191,3 +191,28 @@ body{
     background:url("../img/bg07.jpg") no-repeat center;
     background-size: 100% 100%;
 }
+/***********************************/
+#bgm-play{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    z-index: 999;
+    background-image: url(../img/music.png);
+    background-size: 100% 100%;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+#bgm-play.rotate{
+    -webkit-animation: rotateing 1.5s infinite linear;
+}
+@keyframes rotateing{
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+

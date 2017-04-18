@@ -190,6 +190,8 @@
     <div class="arrow-up">
         <img src="img/web-swipe-tip.png">
     </div>
+    <div id="bgm-play" class="rotate" onclick="play()"></div>
+    <audio src="http://p2.music.126.net/cMndsSYU-40pnLS6lzxEMw==/2900511674657713.mp3"  id="audio" class="audio1" autoplay style="display: none"></audio>
 </div>
 <script src="js/swiper.min.js" type="text/javascript"></script>
 <script src="js/swiper.animate1.0.2.min.js" type="text/javascript"></script>
@@ -206,6 +208,17 @@
             swiperAnimate(swiper);
         }
     })
+    var audio=document.getElementById("audio");
+    var palyBtn=document.getElementById("bgm-play");
+    function play(){
+        if(palyBtn.className=="rotate"){
+            audio.pause();
+            palyBtn.className="";
+        }else {
+            audio.play();
+            palyBtn.className="rotate";
+        }
+    }
 </script>
 </body>
 </html>
