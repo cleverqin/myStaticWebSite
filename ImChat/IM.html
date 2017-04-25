@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能机器人聊天室</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="css/im.css">
+    <link href="css/face.css" rel=stylesheet>
+</head>
+<body>
+    <div class="ui-chat-box" id="content">
+        <header class="ui-section">与智能机器人聊天中</header>
+        <section class="ui-section ui-msg-content">
+            <ul class="ui-msg-list">
+                <template v-for="item in msgList">
+                    <msg-item :msg="item" ></msg-item>
+                </template>
+            </ul>
+        </section>
+        <footer class="ui-section">
+            <div class="ui-face-btn"></div>
+            <div class="ui-input-box">
+                <input type="text" class="ui-msg-input" v-model="content"  placeholder="请输入...."/>
+            </div>
+            <button class="ui-sendBtn" type="button" v-on:click="sendMsg">发送</button>
+        </footer>
+    </div>
+    <template id="msgTpl">
+        <li class="user-msg" v-if="msg.type==='user'">
+            <div class="msg-box">
+                <div class="msg-box-img">
+                    <img v-bind:src="msg.content.user.pic" class="user-img">
+                    <div class="msg-tag-txt">{{msg.content.user.nickName}}</div>
+                </div>
+                <div class="msg-txt-box">
+                    <div class="msg-txt-content"><span class="msg-arrow"></span><div v-html="msg.content.msg"></div></div>
+                </div>
+            </div>
+        </li>
+        <li class="me-msg" v-else-if="msg.type==='send'" >
+            <div class="msg-box">
+                <div class="msg-box-img">
+                    <img v-bind:src="msg.content.user.pic" class="user-img">
+                    <div class="msg-tag-txt">我</div>
+                </div>
+                <div class="msg-txt-box">
+                    <div class="msg-txt-content"><span class="msg-arrow"></span><div v-html="msg.content.msg"></div></div>
+                </div>
+            </div>
+        </li>
+        <li class="sys-msg" v-else="msg.type==='sys'">
+            <div class="msg-box"><div v-html="msg.content.msg"></div></div>
+        </li>
+    </template>
+    <script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.3.1/vue-resource.min.js"></script>
+    <script src="js/face.js"></script>
+    <script src="js/im.js"></script>
+</body>
+</html>
