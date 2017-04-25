@@ -86,6 +86,12 @@ window.onload=function () {
             app.content+="【"+face.title+"】"
         }
     });
+    document.querySelector('input[type="text"]').addEventListener("click",function () {
+        var target = this;
+        setTimeout(function(){
+            target.scrollIntoViewIfNeeded();
+        },400);
+    })
     function filterData(data) {
         switch(data.code)
         {
