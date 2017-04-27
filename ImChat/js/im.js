@@ -1,4 +1,6 @@
 window.onload=function () {
+    var audio=document.getElementById('audio');
+    audio.volume=0.2;
     String.prototype.Trim = function() {
         return this.replace(/(^\s*)|(\s*$)/g, "");
     }
@@ -72,6 +74,7 @@ window.onload=function () {
                             }
                         }
                         _this.msgList.push(msgItem);
+                        audio.play();
                     }
                 })
             }
