@@ -50,9 +50,7 @@ body{
     background-color: #eee;
 }
 .content{
-    max-width: 1000px;
-    width: 100%;
-    min-width: 320px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 section{
@@ -60,10 +58,8 @@ section{
 }
 /*************************header头部样式*************************************/
 .header{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background:#E9E6BD url("../resources/img/p3.jpg") no-repeat center 78%;
     width:100%;
+    background-color: #333;
 }
 .header .headerImg{
     margin: 0 auto;
@@ -82,47 +78,67 @@ section{
     color: #0a0f14;
     text-shadow: 2px 0 3px #cdcdcd;
 }
+.header .logo{
+    width: 48px;
+    height: 48px;
+    font-size: 32px;
+    float: left;
+    color: #ccc;
+}
+.logo-home{
+    display: block;
+    background: url("../resources/img/headerIMG.png") no-repeat center;
+    width: 36px;
+    height: 36px;
+    background-size: 36px 36px;
+    margin: 6px;
+    border-radius: 50%;
+}
 /**********************navBox导航样式**********************/
 .navBox{
-    background: #6f6f6f;
+    height: 48px;
+    background-color: #333;
 }
 .navList{
-    list-style: none;
-    text-align: left;
-    line-height: 3em;
+    float: right;
 }
 .navList>li{
-    list-style: none;
-    display: inline-block;
-    margin-left: 1px;
-    height: 3em;
+    float: left;
 }
-.navList>li>a{
-    padding: 0 0.5em;
-    color: #ffffff;
-    display: block;
-    cursor:pointer;
-    text-decoration:none;
+.navList>li a{
+    font-size: 15px;
+    color: #ccc;
+    line-height: 48px;
+    padding: 0 15px;
 }
-.navList>li>a:hover{
-    background: #666666;
+.navList>li:hover{
+    background-color: #1b1b1b;
+}
+.navList>li:hover a{
+    color: #21b7ef;
 }
 /***************footer底部样式*****************/
 .footer{
-    background-color: #E2E2E2;
-    padding: 20px 0;
+    background-color: #eee;
+    padding: 40px 0;
+    border-top: 1px solid #ccc;
 }
 .coBox:after{
     display: table;
     content: "";
     clear: both;
 }
+.coBox{
+    width: 571px;
+    margin: 0 auto;
+}
 .coBox>li{
     float: left;
-    width: 100%;
+    padding: 0 30px;
 }
 .coBox>li:first-child{
-    height: 85px;
+    height: 124px;
+    border-right: 1px solid #ccc;
 }
 .myWeChatBox{
     text-align: center;
@@ -139,37 +155,43 @@ section{
 .contactMeBox{
     width: 180px;
     margin: 0 auto;
+    padding-top: 25px;
 }
 .contactMeBox p{
     font-size: 14px;
-    color: #474747;
+    color: #666;
     line-height: 24px;
 }
 .contactMeBox p.title{
     font-weight: bold;
-    color: #646464;
+    color: #666;
     font-size: 16px;
 }
 .contactMeBox p.tag{
     font-weight: bold;
 }
 .contactMeBox p.tag a{
-    color: #666666;
+    color: #666;
     font-size: 14px;
     font-weight: normal;
 }
 .bottomBox{
     font-size: 12px;
-    color: #666666;
+    color: #666;
     line-height: 28px;
     text-align: center;
     margin-top: 10px;
 }
 /***************************************/
-.articleBox{
+.sectionBox{
+    padding: 5px;
     background-color: #ffffff;
-    padding: 20px;
-    border: 1px solid #e3e3e3;
+}
+.aside-card{
+    margin-top: 15px;
+}
+.articleBox{
+    padding: 15px;
 }
 .articleBox .articleTitle{
     font-size: 16px;
@@ -187,16 +209,9 @@ section{
     font-size: 20px;
     font-weight: bold;
     line-height: 40px;
-    margin: 10px 0px;
-    background-color: #c9dab0;
     padding-left: 15px;
     color: #333;
-}
-#slidesBox{
-    height: 400px;
-}
-.slideBox{
-    padding-top: 10px;
+    border-bottom: 1px solid #cccccc;
 }
 /*****************************************/
 .navItem{
@@ -228,4 +243,321 @@ section{
 }
 .navItem:hover{
     background-color: #dddddd;
+}
+#qrcode{
+    margin: 0 auto;
+    width: 220px;
+    height: 220px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 3px #000;
+    margin-top: 20px;
+}
+.inputBox{
+    height: 35px;
+}
+#error{
+    color: #f36976;
+    font-size: 12px;
+    line-height: 20px;
+    padding-left: 15px;
+}
+#text{
+    outline: none;
+    border: 1px solid #bfbfbf;
+    border-radius: 4px;
+    line-height: 35px;
+    height: 35px;
+    padding: 0 10px;
+    font-size: 16px;
+    color: #606060;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+#text:focus{
+    border: 1px solid #7cb1f3;
+    box-shadow: 0 0 3px #7cb1f3;
+}
+/******************************************/
+.ui-row:after{
+    display: table;
+    clear: both;
+    content: '';
+}
+.ui-row,.music-player-box{
+    height: 100px;
+    width: 500px;
+    background-color: #333;
+    position: relative;
+}
+.ui-row .ui-row-item{
+    float: left;
+}
+.music-player-box{
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    transition: left 0.5s linear;
+    z-index: 999;
+}
+.music-player-box.music-player-hide{
+    left: -500px;
+}
+/***********************************/
+.music-poster-box{
+    width: 100px;
+    height: 100px;
+}
+.music-poster-box .music-poster{
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    border-radius: 50%;
+}
+/***************歌曲信息********************/
+.music-info{
+    width: 120px;
+    margin-left: 5px;
+    padding-top: 10px;
+}
+.music-info div{
+    color: #ccc;
+    font-size: 15px;
+    line-height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/**************播放控制*******************/
+.music-control{
+    line-height: 81px;
+}
+.music-control span{
+    font-size: 30px;
+    cursor: pointer;
+    vertical-align: middle;
+    color: #ccc;
+}
+.music-control span:hover{
+    color: #eee;
+}
+.music-control span.play_bt{
+    font-size: 35px;
+}
+/****************音量控制******************/
+.volume-control{
+    width: 120px;
+    padding-top: 1px;
+    margin-left: 5px;
+}
+.volume-btn{
+    width: 20px;
+    float: left;
+    line-height: 80px;
+}
+.volume-btn span{
+    color: #ccc;
+    cursor: pointer;
+}
+.volume-btn span:hover{
+    color: #eee;
+}
+.volume-slider{
+    margin-left: 30px;
+    margin-top: 36px;
+}
+/****************进度条*************************/
+.slider-bar{
+    height: 8px;
+    background-color: #6d6d6d;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.slider-progress{
+    position: relative;
+    height: 100%;
+    width: 0;
+    background-color: #f36976;
+    border-radius: 4px;
+    float: left;
+}
+.slider-dot-control{
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    margin-top: -1px;
+    right: -5px;
+    border-radius: 50%;
+    background-color: #f36976;
+    cursor: pointer;
+    z-index: 9;
+    float: left;
+    border: 3px solid #fff;
+}
+/***************时间进度***********************/
+.time-slider{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+/*********************已播放时间****************************/
+.played-time{
+    position: absolute;
+    right: 0;
+    font-size: 15px;
+    bottom: 10px;
+    padding: 5px;
+    color: #ccc;
+}
+.list-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #ccc;
+}
+.list-btn span{
+    font-size: 25px;
+    cursor: pointer;
+}
+.list-btn span:hover{
+    color: #eee;
+}
+.hide-btn-box{
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 30px;
+    background-color: #333;
+    height: 100%;
+    line-height: 100px;
+    text-align: center;
+    color: #ccc;
+    border-radius: 0 7px 7px 0;
+    border-left: 1px solid #1b1b1b;
+    cursor: pointer;
+}
+.hide-btn-box span{
+    font-size: 20px;
+}
+.hide-btn-box:hover{
+    background-color: #444;
+}
+.hide-btn-box:hover span{
+    color: #eee;
+}
+/*****************************/
+@-webkit-keyframes rotateRound {
+    0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes rotateRound {
+    0% {-moz-transform: rotate(0deg);}
+    100% {-moz-transform: rotate(360deg);}
+}
+@keyframes rotateRound {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+.playing{
+    -moz-animation: rotateRound 5s linear infinite;
+    -webkit-animation: rotateRound 5s linear infinite;
+    animation: rotateRound 5s linear infinite;
+
+}
+/*******************************/
+.music-list-box{
+    display: none;
+    position: absolute;
+    width: 500px;
+    background-color: #333;
+    left: 0;
+    bottom: 100%;
+}
+.music-list-body{
+    max-height: 336px;
+    overflow-y: auto;
+}
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+.music-list-body::-webkit-scrollbar,.aside-body::-webkit-scrollbar{
+    width: 5px;
+    height: 16px;
+    background-color: rgba(255, 255, 255, 0.38);
+}
+/*定义滚动条的轨道，内阴影及圆角*/
+.music-list-body::-webkit-scrollbar-track,.aside-body::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(240, 240, 240, 0.3);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.36);
+}
+/*定义滑块，内阴影及圆角*/
+.music-list-body::-webkit-scrollbar-thumb,.aside-body::-webkit-scrollbar-thumb{
+    /*width: 10px;*/
+    height: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(236, 236, 236, 0.3);
+    background-color: #555;
+}
+.music-list-body table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    color: #ccc;
+    font-size: 12px;
+}
+.music-list-body table td,.music-list-body table th{
+    text-align: left;
+    line-height: 28px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.music-list-body table tbody tr:hover td{
+    background-color: #1b1b1b;
+}
+.music-list-title{
+    height: 32px;
+    line-height: 32px;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #ccc;
+    font-weight: bold;
+    border-bottom: 1px solid #1b1b1b;
+}
+/******************************************************/
+.content{
+    width: 1200px;
+    margin:  0 auto;
+}
+.content:after{
+    display: table;
+    clear: both;
+    content: '';
+}
+.leftBox{
+    width: 860px;
+    background-color: #ffffff;
+    float: left;
+}
+.rightBox{
+    width: 320px;
+    margin-left: 20px;
+    float: left;
+}
+.site-header{
+    height: 48px;
+    margin-bottom: 20px;
+    min-width: 1200px;
+}
+.site-footer{
+    height: 450px;
+    background-color: #373b43;
+    margin-top: 20px;
+    min-width: 1200px;
 }
