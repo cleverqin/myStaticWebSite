@@ -106,7 +106,19 @@ $(function(){
         width : 220,
         height : 220
     });
-
+    $.getJSON("http://api.asilu.com/weather?city=北京&callback=?", function(data) {
+        $('#weather-box').html(renderTpl(data))
+    });
+    function renderTpl(data) {
+        var weatherItem=data.weather[0];
+        var html='<div class="weather-card">' +
+            '<div class="base-info"><span class="query-city">'+data.city+'</span><span class="pm-25">pm2.5：</span><span class="pm-number">'+data.pm25+'</span></div>' +
+            ' <div class="weather-date">'+weatherItem.date+'</div> ' +
+            '<div class="weather-info"><span>'+weatherItem.weather+'</span><span>'+weatherItem.wind+'</span></div> ' +
+            '<div class="wind-temp">'+weatherItem.temp+'</div> ' +
+            '</div>'
+        return html
+    }
     function makeCode () {
         var elText = document.getElementById("text");
         var error=document.getElementById("error");
