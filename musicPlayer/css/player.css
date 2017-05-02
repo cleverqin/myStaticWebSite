@@ -71,7 +71,7 @@ a{
 }
 .logo-home{
     display: block;
-    background: url("../../resources/img/headerIMG.png") no-repeat center;
+    background: url("https://git.oschina.net/cleverqin/img/raw/master/headerIMG.png") no-repeat center;
     width: 36px;
     height: 36px;
     background-size: 36px 36px;
