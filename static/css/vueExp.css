@@ -1,0 +1,27 @@
+
+.nav-content{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.vi-content{
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    min-height: 500px;
+}
+.search-form{
+    padding: 20px;
+}
+.table-box{
+    padding: 0 20px 20px;
+}
+.add-form .el-dialog{
+    max-width: 450px;
+}
+.add-form input{
+    width: 300px;
+}
+.page-block .el-pagination{
+    padding: 10px;
+    text-align: right;
+}

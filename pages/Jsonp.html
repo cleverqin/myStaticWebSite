@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>常用的开放接口使用示例</title>
+    <meta name="author"content="cleverqin,705597001@qq.com">
+    <meta name="keywords"content="js,html,css,分享,案例">
+    <meta name="keywords"content="使用js,html,css搭建的个人站点，在这里与我共同分享知识和快乐">
+    <link href="../static/css/common.css" rel="stylesheet">
+    <link href="../static/css/element-ui-1.2.4.css" rel="stylesheet"/>
+    <link href="../static/css/jsonp.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="ui-header">
+    <div class="site-header">
+        <div class="navBox ui-content">
+            <div class="logo">
+                <a href="../index.html" class="logo-home"></a>
+            </div>
+            <ul class="navList">
+                <li><a href="../index.html">主页</a></li>
+                <li><a  href="./musicPlayer.html">音乐</a></li>
+                <li><a  href="./Jsonp.html">开放接口</a></li>
+                <li><a  href="./vueExp.html">VUE案例</a></li>
+                <li><a  href="./Chat.html">聊天室</a></li>
+                <li><a  href="http://cleverqin.cn/resume/demo.html" target="_blank">关于我</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<section>
+    <div class="ui-content player-content-box">
+        <div id="app">
+            <div class="body-content">
+                <el-form :inline="true" :model="ruleForm" class="demo-form-inline"  ref="ruleForm">
+                    <el-form-item label="接口选择：" prop="table">
+                        <el-select v-model="ruleForm.table" placeholder="请选择">
+                            <el-option
+                                    v-for="item in ruleForm.options"
+                                    :label="item.title"
+                                    :value="item">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-form>
+                <el-table
+                        :data="[ruleForm.table]"
+                        border
+                        style="width: 100%;margin-bottom: 15px">
+                    <el-table-column
+                            prop="title"
+                            label="接口名称"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="url"
+                            label="接口地址">
+                    </el-table-column>
+                </el-table>
+                <el-table
+                        :data="ruleForm.table.data"
+                        border
+                        style="width: 100%;margin-bottom: 15px">
+                    <el-table-column
+                            prop="title"
+                            label="名称"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="name"
+                            label="key"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="value"
+                            label="默认值">
+                    </el-table-column>
+                    <el-table-column
+                            prop="desc"
+                            label="备注">
+                    </el-table-column>
+                </el-table>
+                <el-form :model="ruleForm1"   class="demo-ruleForm" >
+                    <el-form-item
+                            v-for="(item, index) in ruleForm.table.data"
+                            :label="item.title"
+                            :key="item.name"
+                            :prop="item.name"
+                    >
+                        <el-input type="text" v-model="ruleForm1[item.name]" v-bind:name="item.name"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="submitForm">提交</el-button>
+                    </el-form-item>
+                </el-form>
+                <pre v-html="res" class="api-json prettyprint linenums"></pre>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="ui-footer">
+    <div class="ui-content">
+        <ul class="coBox">
+            <li>
+                <div class="contactMeBox">
+                    <p class="title">联系我</p>
+                    <p class="tag">邮箱:<a href="#">705597001@qq.com</a></p>
+                    <p class="tag">手机:<a href="#">15238****27</a></p>
+                </div>
+            </li>
+            <li>
+                <div class="myWeChatBox"><img src="https://git.oschina.net/cleverqin/img/raw/master/mmqrcode.png"/><img src="https://git.oschina.net/cleverqin/img/raw/master/myAliPay.png"/></div>
+            </li>
+        </ul>
+        <div class="bottomBox">备注：本网站所有权归创作者所有，如有疑问请联系作者。</div>
+    </div>
+</footer>
+<script src="../static/js/vue.min.2.2.0.js" type="text/javascript"></script>
+<script src="../static/js/vue-resource.js" type="text/javascript"></script>
+<script src="../static/js/element-ui-1.2.4.js" type="text/javascript"></script>
+<script src="../static/js/prism.js" type="text/javascript"></script>
+<script src="../static/js/jsonp.js" type="text/javascript"></script>
+</body>
+</html>

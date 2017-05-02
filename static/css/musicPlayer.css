@@ -1,0 +1,303 @@
+
+
+.m_player_dock{
+    width: 500px;
+    height: 100px;
+    position: relative;
+    padding-bottom: 10px;
+    background-color: #333;
+    float: left;
+}
+.ui-row:after{
+    display: table;
+    clear: both;
+    content: '';
+}
+
+.player-content-box{
+    padding: 20px;
+    background-color: #333;
+}
+/********************************/
+.music_msg:after,.play-bar-box:after{
+    display: table;
+    clear: both;
+    content: '';
+}
+.music_msg{
+    float: left;
+}
+.album_pic{
+    display: block;
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.album_pic img{
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+}
+.music_info_main{
+    float: left;
+    width: 120px;
+    margin-left: 10px;
+    padding: 5px 0;
+}
+.music_info_main p{
+    color: #ccc;
+    font-size: 15px;
+    line-height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.play-bar-box{
+    float: left;
+    padding-top: 25px;
+}
+.play-control-box{
+    width: 120px;
+    float: left;
+    font-size: 0;
+    padding-top: 25px;
+}
+.play-control-box span{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    text-align: center;
+    line-height: 40px;
+    color: #ccc;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.play-control-box span:hover{
+    color: #eaeaea;
+}
+.play-control-box .play_bt{
+    font-size: 35px;
+}
+/********************声音进度条*************************/
+.volume-control-box{
+    float: left;
+    width: 120px;
+    padding-top: 35px;
+}
+.volume_regulate{
+    display: block;
+    width: 95px;
+    height: 8px;
+    background-color: #000;
+    display: block;
+    border-radius: 4px;
+    position: relative;
+    margin-left: 25px;
+    margin-top: 7px;
+}
+.volume_bar{
+    height: 100%;
+    display: block;
+    border-radius: 4px;
+    background-color: #f36976;
+    width: 0;
+}
+.volume_op{
+    display: block;
+    height: 4px;
+    width: 4px;
+    background-color: #f36976;
+    float: left;
+    border-radius: 5px;
+    margin-left: -3px;
+    top: 50%;
+    margin-top: -5px;
+    position: absolute;
+    cursor: pointer;
+    border: 3px solid #fff;
+}
+.volume_icon-box{
+    display: block;
+    float: left;
+    height: 20px;
+    width: 20px;
+    color: #ccc;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.volume_icon-box:hover{
+    color: #eaeaea;
+}
+/****************时间进度条*************************/
+.slider-bar{
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background-color: #6d6d6d;
+    border-radius: 4px;
+    cursor: pointer;
+    left: 0;
+    bottom: 0px;
+    z-index: 10;
+}
+.slider-progress{
+    position: relative;
+    height: 100%;
+    width: 0;
+    background-color: #f36976;
+    border-radius: 4px;
+    float: left;
+}
+.slider-dot-control{
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    margin-top: -1px;
+    right: -5px;
+    border-radius: 50%;
+    background-color: #f36976;
+    cursor: pointer;
+    z-index: 9;
+    float: left;
+    border: 3px solid #fff;
+}
+.slider-msg{
+    position: absolute;
+    width: 60px;
+    height: 24px;
+    text-align: center;
+    bottom: 15px;
+    left: 0px;
+    background-color: #6d6d6d;
+    color: #fff;
+    font-size: 12px;
+    line-height: 24px;
+    border-radius: 4px;
+    margin-left: -30px;
+    display: none;
+}
+.slider-msg:after{
+    display: block;
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 4px solid #6d6d6d;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    top:100%;
+    left: 50%;
+    margin-left: -4px;
+}
+/*********************已播放时间****************************/
+.played-time{
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    padding: 5px;
+    color: #ccc;
+}
+/***************************************/
+.lrc-box{
+    background-color: #333;
+    width: 460px;
+    padding: 20px 0;
+    float: left;
+    height: 100px;
+}
+#lrc div.active_lrc{
+    color: #f36976;
+}
+#lrc div{
+    color: #ccc;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+    height: 20px;
+}
+#lrc{
+    max-height: 100px;
+    overflow-y: hidden;
+    transition: all 0.5s linear;
+}
+/*****************************/
+@-webkit-keyframes rotateRound {
+    0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes rotateRound {
+    0% {-moz-transform: rotate(0deg);}
+    100% {-moz-transform: rotate(360deg);}
+}
+@keyframes rotateRound {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+.playing{
+    -moz-animation: rotateRound 5s linear infinite;
+    -webkit-animation: rotateRound 5s linear infinite;
+    animation: rotateRound 5s linear infinite;
+
+}
+#poster{
+    border-radius: 50%;
+}
+/*******************************/
+.music-list-box{
+    display: block;
+    background-color: #333;
+    left: 0;
+    bottom: 100%;
+}
+.music-list-body{
+    overflow-y: auto;
+}
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+.music-list-body::-webkit-scrollbar,.aside-body::-webkit-scrollbar{
+    width: 5px;
+    height: 16px;
+    background-color: rgba(255, 255, 255, 0.38);
+}
+/*定义滚动条的轨道，内阴影及圆角*/
+.music-list-body::-webkit-scrollbar-track,.aside-body::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(240, 240, 240, 0.3);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.36);
+}
+/*定义滑块，内阴影及圆角*/
+.music-list-body::-webkit-scrollbar-thumb,.aside-body::-webkit-scrollbar-thumb{
+    /*width: 10px;*/
+    height: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(236, 236, 236, 0.3);
+    background-color: #555;
+}
+.music-list-body table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    color: #ccc;
+    font-size: 12px;
+}
+.music-list-body table td,.music-list-body table th{
+    text-align: left;
+    line-height: 28px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.music-list-body table tbody tr:hover td{
+    background-color: #1b1b1b;
+    color: #eee;
+}
+.music-list-title{
+    height: 32px;
+    line-height: 32px;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #ccc;
+    font-weight: bold;
+    border-bottom: 1px solid #1b1b1b;
+}

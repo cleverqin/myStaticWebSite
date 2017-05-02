@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>音乐播放器</title>
+    <meta name="author"content="cleverqin,705597001@qq.com">
+    <meta name="keywords"content="js,html,css,分享,案例">
+    <meta name="keywords"content="使用js,html,css搭建的个人站点，在这里与我共同分享知识和快乐">
+    <link href="../static/css/common.css" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3kczlqb54gqfr.css">
+    <link href="../static/css/musicPlayer.css" rel="stylesheet">
+</head>
+<body>
+<header class="ui-header">
+    <div class="site-header">
+        <div class="navBox ui-content">
+            <div class="logo">
+                <a href="../index.html" class="logo-home"></a>
+            </div>
+            <ul class="navList">
+                <li><a href="../index.html">主页</a></li>
+                <li><a  href="./musicPlayer.html">音乐</a></li>
+                <li><a  href="./Jsonp.html">开放接口</a></li>
+                <li><a  href="./vueExp.html">VUE案例</a></li>
+                <li><a  href="./Chat.html">聊天室</a></li>
+                <li><a  href="http://cleverqin.cn/resume/demo.html" target="_blank">关于我</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<section>
+    <div class="ui-content player-content-box">
+        <audio></audio>
+        <!-- 主体 -->
+        <div class="ui-row player-box">
+            <div class="m_player_dock">
+                <!-- 歌曲信息 -->
+                <div class="music_msg">
+                    <a href="javascript:;"class="album_pic">
+                        <img src="https://git.oschina.net/cleverqin/img/raw/master/headerIMG.png" alt="" id="poster">
+                    </a>
+                    <div class="music_info_main">
+                        <p class="music_name">
+                            <span>听我想听的歌</span>
+                        </p>
+                        <p class="singer_name">网易</p>
+                        <p class="play_date">2:16</p>
+                    </div>
+                </div>
+                <!-- 暂停 上一首 下一首 -->
+                <div class="play-control-box">
+                    <span class="prev_bt icon-previous iconfont" title="上一首"></span>
+                    <span class="play_bt icon-bofang iconfont" title="播放/暂停"></span>
+                    <span class="next_bt icon-next iconfont" title="下一首"></span>
+                </div>
+                <div class="volume-control-box">
+                    <div class="volume_icon-box">
+                        <span class="volume_icon icon-voice iconfont"></span>
+                    </div>
+                    <div class="volume_regulate">
+                        <div class="volume_bar"></div>
+                        <div class="volume_op"></div>
+                    </div>
+                </div>
+                <div class="played-time">00:00</div>
+                <div class="slider-bar" id="playProgress">
+                    <div class="slider-progress">
+                        <div class="slider-dot-control"></div>
+                    </div>
+                    <div class="slider-msg">
+                        00:00
+                    </div>
+                </div>
+            </div>
+            <div class="lrc-box">
+                <div id="lrc"></div>
+            </div>
+        </div>
+        <div class="music-list-box">
+            <div class="music-list-title">歌曲列表</div>
+            <div class="music-list-body">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>歌名</th><th>歌手</th><th>时长</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="ui-footer">
+    <div class="ui-content">
+        <ul class="coBox">
+            <li>
+                <div class="contactMeBox">
+                    <p class="title">联系我</p>
+                    <p class="tag">邮箱:<a href="#">705597001@qq.com</a></p>
+                    <p class="tag">手机:<a href="#">15238****27</a></p>
+                </div>
+            </li>
+            <li>
+                <div class="myWeChatBox"><img src="https://git.oschina.net/cleverqin/img/raw/master/mmqrcode.png"/><img src="https://git.oschina.net/cleverqin/img/raw/master/myAliPay.png"/></div>
+            </li>
+        </ul>
+        <div class="bottomBox">备注：本网站所有权归创作者所有，如有疑问请联系作者。</div>
+    </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="../static/js/musicPlayer.js"></script>
+</body>
+</html>

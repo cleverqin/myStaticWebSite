@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>智能机器人聊天室</title>
+    <meta name="author"content="cleverqin,705597001@qq.com">
+    <meta name="keywords"content="js,html,css,分享,案例">
+    <meta name="keywords"content="使用js,html,css搭建的个人站点，在这里与我共同分享知识和快乐">
+    <link href="../static/css/common.css" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3kczlqb54gqfr.css">
+    <link href="../static/css/face.css" rel="stylesheet"/>
+    <link href="../static/css/chatDemo.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="ui-header">
+    <div class="site-header">
+        <div class="navBox ui-content">
+            <div class="logo">
+                <a href="../index.html" class="logo-home"></a>
+            </div>
+            <ul class="navList">
+                <li><a href="../index.html">主页</a></li>
+                <li><a  href="./musicPlayer.html">音乐</a></li>
+                <li><a  href="./Jsonp.html">开放接口</a></li>
+                <li><a  href="./vueExp.html">VUE案例</a></li>
+                <li><a  href="./Chat.html">聊天室</a></li>
+                <li><a  href="http://cleverqin.cn/resume/demo.html" target="_blank">关于我</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<section>
+    <div class="ui-content player-content-box">
+        <div id="content">
+            <div class="chat-box">
+                <div class="chat-box-left">
+                    <div class="aside-header">
+                        <div class="aside-header-txt">在线列表</div>
+                    </div>
+                    <div class="aside-body">
+                        <ul class="online-list">
+                            <online-item :user="item" v-for="item in onlineList"></online-item>
+                        </ul>
+                    </div>
+                </div>
+                <div class="chat-box-right">
+                    <div class="main-title-box">
+                        <div class="chat-title">Chat聊天室</div>
+                    </div>
+                    <div class="sub-title-box">
+                        <div class="sub-title">在线人数：<span class="online-num" v-text="onlineNum"></span></div>
+                    </div>
+                    <div class="msg-content-box">
+                        <ul class="chat-msg-list">
+                            <template v-for="item in msgList">
+                                <msg-item :msg="item" ></msg-item>
+                            </template>
+                        </ul>
+                    </div>
+                    <div class="toolBar-box">
+                        <div  class='faceBtn' id='faceBtn'>
+                            <span class="iconFaceBtn iconfont icon-biaoqing" title="选择表情"></span>
+                        </div>
+                    </div>
+                    <div class="control-box">
+                        <div class="control-left">
+                            <textarea class="msg-input" placeholder="请输入消息" v-model="msg" @keyup.enter="sendMsg"></textarea>
+                        </div>
+                        <div class="control-right">
+                            <button type="button" class="send-btn" v-on:click="sendMsg">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <login :show="isShow"></login>
+        </div>
+        <template id="onlineItem">
+            <li class="online-item">
+                <div class="img-box"><img v-bind:src="user.pic"></div>
+                <div class="name-box" v-text="user.nickName"></div>
+            </li>
+        </template>
+        <template id="msgTpl">
+            <li class="user-msg" v-if="msg.type==='user'">
+                <div class="msg-box">
+                    <div class="msg-box-img">
+                        <img v-bind:src="msg.content.user.pic" class="user-img">
+                        <div class="msg-tag-txt">{{msg.content.user.nickName}}</div>
+                    </div>
+                    <div class="msg-txt-box">
+                        <div class="msg-txt-content"><span class="msg-arrow"></span><div v-html="msg.content.msg"></div></div>
+                    </div>
+                </div>
+            </li>
+            <li class="me-msg" v-else-if="msg.type==='send'" >
+                <div class="msg-box">
+                    <div class="msg-box-img">
+                        <img v-bind:src="msg.content.user.pic" class="user-img">
+                        <div class="msg-tag-txt">我</div>
+                    </div>
+                    <div class="msg-txt-box">
+                        <div class="msg-txt-content"><span class="msg-arrow"></span><div v-html="msg.content.msg"></div></div>
+                    </div>
+                </div>
+            </li>
+            <li class="sys-msg" v-else="msg.type==='sys'">
+                <div class="msg-box"><div v-html="msg.content.msg"></div></div>
+            </li>
+        </template>
+    </div>
+</section>
+<footer class="ui-footer">
+    <div class="ui-content">
+        <ul class="coBox">
+            <li>
+                <div class="contactMeBox">
+                    <p class="title">联系我</p>
+                    <p class="tag">邮箱:<a href="#">705597001@qq.com</a></p>
+                    <p class="tag">手机:<a href="#">15238****27</a></p>
+                </div>
+            </li>
+            <li>
+                <div class="myWeChatBox"><img src="https://git.oschina.net/cleverqin/img/raw/master/mmqrcode.png"/><img src="https://git.oschina.net/cleverqin/img/raw/master/myAliPay.png"/></div>
+            </li>
+        </ul>
+        <div class="bottomBox">备注：本网站所有权归创作者所有，如有疑问请联系作者。</div>
+    </div>
+</footer>
+<script src="../static/js/vue.min.2.2.0.js" type="text/javascript"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="../static/js/face.js" type="text/javascript"></script>
+<script src="../static/js/demo2.js" type="text/javascript"></script>
+</body>
+</html>
