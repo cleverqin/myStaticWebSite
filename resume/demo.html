@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="css/demo.css">
 </head>
 <body>
+<div class="loading">
+    <div class="load-span">0%</div>
+</div>
 <div class="swiper-container swiper-container-vertical">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -190,26 +193,102 @@
     <div class="arrow-up">
         <img src="img/web-swipe-tip.png">
     </div>
-    <div id="bgm-play" class="rotate" onclick="play()"></div>
-    <audio src="http://p2.music.126.net/cMndsSYU-40pnLS6lzxEMw==/2900511674657713.mp3"  id="audio" class="audio1" autoplay style="display: none"></audio>
+    <div id="bgm-play" class="" onclick="play()"></div>
+    <audio src="http://p2.music.126.net/cMndsSYU-40pnLS6lzxEMw==/2900511674657713.mp3"  id="audio" class="audio1" style="display: none"></audio>
 </div>
 <script src="js/swiper.min.js" type="text/javascript"></script>
 <script src="js/swiper.animate1.0.2.min.js" type="text/javascript"></script>
 <script>
-    var mySwiper = new Swiper ('.swiper-container', {
-        direction : 'vertical',
-        pagination: '.swiper-pagination',
-        mousewheelControl : true,
-        onInit: function(swiper){
-            swiperAnimateCache(swiper);
-            swiperAnimate(swiper);
-        },
-        onSlideChangeEnd: function(swiper){
-            swiperAnimate(swiper);
-        }
-    })
+    var count=0;
+    var len=7;
+    var loading=document.querySelector('.loading');
+    var span=document.querySelector('.loading .load-span');
     var audio=document.getElementById("audio");
     var palyBtn=document.getElementById("bgm-play");
+    audio.onended=function () {
+        palyBtn.className="";
+    }
+    audio.onplay=function () {
+        palyBtn.className="rotate";
+    }
+    audio.onpause=function () {
+        palyBtn.className="";
+    }
+    for(var i=1;i<8;i++){
+        var url="./img/bg0"+i+".jpg";
+        var img=new Image();
+        img.addEventListener('load',function () {
+            count++;
+            span.innerHTML=(Math.round(count/len*100))+'%';
+            if(count>=len){
+                init();
+            }
+        })
+        img.addEventListener('error',function () {
+            count++;
+            span.innerHTML=(Math.round(count/len*100))+'%';
+            if(count>=len){
+                init();
+            }
+        })
+        img.src=url;
+    }
+    function init() {
+        loading.style.display="none";
+        var mySwiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+            mousewheelControl: true,
+            watchSlidesProgress: true,
+            onInit: function(swiper) {
+                swiper.myactive = 0;
+                swiperAnimateCache(swiper);
+                swiperAnimate(swiper);
+            },
+            onProgress: function(swiper) {
+                for (var i = 0; i < swiper.slides.length; i++) {
+                    var slide = swiper.slides[i];
+                    var progress = slide.progress;
+                    var translate, boxShadow;
+
+                    translate = progress * swiper.height * 0.8;
+                    scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
+                    boxShadowOpacity = 0;
+
+                    slide.style.boxShadow = '0px 0px 10px rgba(0,0,0,' + boxShadowOpacity + ')';
+
+                    if (i == swiper.myactive) {
+                        es = slide.style;
+                        es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0,' + (translate) + 'px,0) scale(' + scale + ')';
+                        es.zIndex=0;
+
+
+                    }else{
+                        es = slide.style;
+                        es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform ='';
+                        es.zIndex=1;
+
+                    }
+
+                }
+
+            },
+            onTransitionEnd: function(swiper, speed) {
+                for (var i = 0; i < swiper.slides.length; i++) {
+                }
+                swiper.myactive = swiper.activeIndex;
+                swiperAnimate(swiper);
+            },
+            onSetTransition: function(swiper, speed) {
+                for (var i = 0; i < swiper.slides.length; i++) {
+                    //if (i == swiper.myactive) {
+                    es = swiper.slides[i].style;
+                    es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
+                    //}
+                }
+            }
+        });
+//        audio.play();
+    }
     function play(){
         if(palyBtn.className=="rotate"){
             audio.pause();
@@ -219,9 +298,11 @@
             palyBtn.className="rotate";
         }
     }
-    audio.onended=function () {
-        palyBtn.className="";
-    }
+
+
+
+
+
 </script>
 </body>
 </html>
