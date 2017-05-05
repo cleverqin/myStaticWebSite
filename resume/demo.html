@@ -9,8 +9,12 @@
     <link rel="stylesheet" href="css/demo.css">
 </head>
 <body>
+<img src="img/mmqrcode.png" class="share-img" width="280">
 <div class="loading">
-    <div class="load-span">0%</div>
+    <div class="load-span">
+        <img src="img/oval.svg" width="38">
+        <div>0%</div>
+    </div>
 </div>
 <div class="swiper-container swiper-container-vertical">
     <div class="swiper-wrapper">
@@ -202,7 +206,7 @@
     var count=0;
     var len=7;
     var loading=document.querySelector('.loading');
-    var span=document.querySelector('.loading .load-span');
+    var span=document.querySelector('.loading .load-span div');
     var audio=document.getElementById("audio");
     var palyBtn=document.getElementById("bgm-play");
     audio.onended=function () {
@@ -245,36 +249,9 @@
                 swiperAnimate(swiper);
             },
             onProgress: function(swiper) {
-                for (var i = 0; i < swiper.slides.length; i++) {
-                    var slide = swiper.slides[i];
-                    var progress = slide.progress;
-                    var translate, boxShadow;
-
-                    translate = progress * swiper.height * 0.8;
-                    scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
-                    boxShadowOpacity = 0;
-
-                    slide.style.boxShadow = '0px 0px 10px rgba(0,0,0,' + boxShadowOpacity + ')';
-
-                    if (i == swiper.myactive) {
-                        es = slide.style;
-                        es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0,' + (translate) + 'px,0) scale(' + scale + ')';
-                        es.zIndex=0;
-
-
-                    }else{
-                        es = slide.style;
-                        es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform ='';
-                        es.zIndex=1;
-
-                    }
-
-                }
 
             },
             onTransitionEnd: function(swiper, speed) {
-                for (var i = 0; i < swiper.slides.length; i++) {
-                }
                 swiper.myactive = swiper.activeIndex;
                 swiperAnimate(swiper);
             },
@@ -298,11 +275,6 @@
             palyBtn.className="rotate";
         }
     }
-
-
-
-
-
 </script>
 </body>
 </html>
