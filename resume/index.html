@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人简历</title>
+    <style>
+        body{
+            background-color: #eee;
+            padding: 0;
+            margin: 0;
+        }
+        .resume-box{
+            width: 1000px;
+            margin: 20px auto;
+            background-color: #fff;
+        }
+        .resume-content{
+            padding: 15px;
+        }
+        .resume-title{
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 30px;
+            color: #333;
+        }
+        .resume-section{
+            padding: 0 15px;
+        }
+        .resume-section .section-header{
+            font-size: 18px;
+            color: #666;
+            line-height: 40px;
+            text-indent: 1em;
+            border-bottom: 1px solid #ddd;
+        }
+        .resume-baseInfo{
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            font-size: 14px;
+            color: #666666;
+        }
+        .resume-baseInfo td{
+            padding: 10px;
+        }
+        .pramas-col{
+            width: 6em;
+            text-align: right;
+        }
+        .express-card{
+            padding: 15px 0;
+        }
+        .express-row{
+            margin-bottom: 5px;
+        }
+        .express-row:after{
+            display: table;
+            clear: both;
+            content: '';
+        }
+        .express-row .row-tag{
+            width: 6em;
+            float: left;
+            text-align: right;
+            font-size: 14px;
+            color: #666666;
+            line-height: 20px;
+            font-weight: bold;
+        }
+        .row-content{
+            margin-left: 6rem;
+            font-size: 14px;
+            color: #666666;
+            line-height: 20px;
+        }
+        .row-content span{
+            margin-left: 15px;
+            font-size: 12px;
+        }
+        .row-list{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .row-list li{
+            font-size: 15px;
+            color: #666666;
+            line-height: 32px;
+            padding-left: 15px;
+        }
+        .resume-article{
+            font-size: 15px;
+            color: #666666;
+            line-height: 32px;
+            padding: 15px;
+        }
+    </style>
+    <script>
+        function browserRedirect() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+               console.log('在移动端浏览');
+               window.location.href='demo.html'
+            } else {
+                console.log('在pc端浏览')
+            }
+        }
+        browserRedirect();
+    </script>
+</head>
+<body>
+    <div class="resume-box">
+        <div class="resume-content">
+            <div class="resume-title">个人简历</div>
+            <div class="resume-section">
+                <div class="section-header">基本信息</div>
+                <div class="section-body">
+                    <table class="resume-baseInfo">
+                        <tr>
+                            <td class="pramas-col">姓名：</td><td>似水流年</td><td class="pramas-col">出生日期：</td><td>1989-05-16</td>
+                        </tr>
+                        <tr>
+                            <td class="pramas-col">毕业院校：</td><td>郑州信息科技职业学院</td><td class="pramas-col">工作年限：</td><td>3年+</td>
+                        </tr>
+                        <tr>
+                            <td class="pramas-col">所学专业：</td><td>通信技术</td><td class="pramas-col">学历：</td><td>大专</td>
+                        </tr>
+                        <tr>
+                            <td class="pramas-col">联系电话：</td><td>15238****27</td><td class="pramas-col">电子邮箱：</td><td>705597001@qq.com</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="resume-section">
+                <div class="section-header">项目经验</div>
+                <div class="section-body">
+                    <div class="express-card">
+                        <div class="express-row">
+                            <div class="row-tag">所在公司：</div>
+                            <div class="row-content">北京仙葫科技有限公司<span>2016.04-2017.01</span></div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">项目名称：</div>
+                            <div class="row-content">葫芦藤公益</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">主要职责：</div>
+                            <div class="row-content">负责手机端页面的开发优化，通用页面插件的编写。负责与后端数据库实现数据交互。不断优化页 和交互体验。负责项目后台系统的页面搭建开发工作。</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">所用技术：</div>
+                            <div class="row-content">CSS3，HTML5，Zepto.js，require.js框架等。</div>
+                        </div>
+                    </div>
+                    <div class="express-card">
+                        <div class="express-row">
+                            <div class="row-tag">所在公司：</div>
+                            <div class="row-content">北京赛富锐特科技有限公司<span>2014.06-2016.04</span></div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">项目名称：</div>
+                            <div class="row-content">P2l前端开发</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">主要职责：</div>
+                            <div class="row-content">负责完成网页设计师的页面设计的开发工作。实现和复原网页设计师的页面特教设计。完成页面的兼容性问题的处理。完成手机端页面的开发工作。负责完成网站所需页面组件的开发。完成网站所需的各种专题页面的开发。优化页面加载效率。</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">所用技术：</div>
+                            <div class="row-content">CSS3，HTML5，jquery.js，zepto.js，svg，canvas等。</div>
+                        </div>
+                    </div>
+                    <div class="express-card">
+                        <div class="express-row">
+                            <div class="row-tag">所在公司：</div>
+                            <div class="row-content">北京赛富锐特科技有限公司<span>2014.06-2016.04</span></div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">项目名称：</div>
+                            <div class="row-content">中化道尔官网优化改版</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">主要职责：</div>
+                            <div class="row-content">负责网站的页面改版开发，优化网站页面结构，使其网站页面能够适应手机，pc和平板多个终端。</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">所用技术：</div>
+                            <div class="row-content">CSS3，HTML5等。</div>
+                        </div>
+                    </div>
+                    <div class="express-card">
+                        <div class="express-row">
+                            <div class="row-tag">所在公司：</div>
+                            <div class="row-content">北京赛富锐特科技有限公司<span>2014.06-2016.04</span></div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">项目名称：</div>
+                            <div class="row-content">优先科技停车app</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">主要职责：</div>
+                            <div class="row-content">根据设计完成页面所需模板的制作开发工作，实现页面所需的各种效果。优化其兼容性。</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">所用技术：</div>
+                            <div class="row-content">CSS3，HTML5，Zepto.js等。</div>
+                        </div>
+                    </div>
+                    <div class="express-card">
+                        <div class="express-row">
+                            <div class="row-tag">所在公司：</div>
+                            <div class="row-content">北京赛富锐特科技有限公司<span>2014.06-2016.04</span></div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">项目名称：</div>
+                            <div class="row-content">小美电商平台</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">主要职责：</div>
+                            <div class="row-content">负责前端页面的开发。优化网站兼容性，优化页加载效率。开发页面所需的js组件。优化页面结构。负责完成网站所需的各种前后端交互工作。</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">所用技术：</div>
+                            <div class="row-content">CSS3，HTML5，jQuery.js，bootstrap前端框架等。</div>
+                        </div>
+                    </div>
+                    <div class="express-card">
+                        <div class="express-row">
+                            <div class="row-tag">所在公司：</div>
+                            <div class="row-content">北京赛富锐特科技有限公司<span>2014.06-2016.04</span></div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">项目名称：</div>
+                            <div class="row-content">人人红娘社交app</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">主要职责：</div>
+                            <div class="row-content">负责app 页的制作和开发。与后端工程师一起实现数据交互。优化页面提升页面流畅度。开发常用模块。</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">所用技术：</div>
+                            <div class="row-content">CSS3，HTML5，Zepto.js，appframework框架等</div>
+                        </div>
+                    </div>
+                    <div class="express-card">
+                        <div class="express-row">
+                            <div class="row-tag">所在公司：</div>
+                            <div class="row-content">北京赛富锐特科技有限公司<span>2014.06-2016.04</span></div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">项目名称：</div>
+                            <div class="row-content">宜信微信公众号开发项目</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">主要职责：</div>
+                            <div class="row-content">负责手机机端页面的制作和开发。优化手机端页面的兼容性和流畅性。负责与服务端开发人员的数据交互工作，优化用户体验。</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">所用技术：</div>
+                            <div class="row-content">CSS3，HTML5，Zepto.js等。</div>
+                        </div>
+                    </div>
+                    <div class="express-card">
+                        <div class="express-row">
+                            <div class="row-tag">所在公司：</div>
+                            <div class="row-content">郑州向心力科技有限公司<span>2013.06-2014.06</span></div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">项目名称：</div>
+                            <div class="row-content">ERP管理系统</div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">主要职责：</div>
+                            <div class="row-content">1.	研究学习现有主流开源技术，完成通产品的研发工作。</br>
+                                2.	负责工程项目基本功能的实现。</br>
+                                3.	完成公司分配的各项任务的完成。</br>
+                                4.	.负责工程项目后期完善工作。
+                            </div>
+                        </div>
+                        <div class="express-row">
+                            <div class="row-tag">所用技术：</div>
+                            <div class="row-content">java mvc css js html等。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="resume-section">
+                <div class="section-header">个人简介</div>
+                <div class="section-body">
+                    <ol class="row-list" type="1">
+                        <li>一、	热爱学习，喜欢接触新的事物。</li>
+                        <li>二、	具有一定的创新能 ，乐于沟通和团队协作。</li>
+                        <li>三、	活乐观，积极向上。</li>
+                        <li>四、	作积极主动，适应性好，责任心强，逻辑思维能力强。</li>
+                        <li>五、	具有很好的独 分析问题和解决问题的能 。</li>
+                        <li>六、	能够从全局出发，敢于接受挑战，承担责任吃苦耐劳。</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="resume-section">
+                <div class="section-header">个人技能</div>
+                <div class="section-body">
+                    <div class="resume-article">熟练掌握css3，html5，canvas，svg，js等技能。熟悉nodejs，angularjs，react.js等能够用这些知识开发一些小的应用和组件。了解websocket能用websocket技术写一些网页聊天的应用。对前端自动化集成和优化有自己的认知和理解。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="js/canvas.js"></script>
+</body>
+</html>
