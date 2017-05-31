@@ -1,7 +1,7 @@
 (function () {
-    // window.onbeforeunload=function(){
-    //     return "您确定退出吗？";
-    // }
+    window.onbeforeunload=function(){
+        return "您确定退出吗？";
+    }
     String.prototype.Trim = function() {
         return this.replace(/(^\s*)|(\s*$)/g, "");
     }
