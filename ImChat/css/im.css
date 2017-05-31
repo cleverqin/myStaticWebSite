@@ -4,20 +4,23 @@ html,body{
     width: 100%;
     height: 100%;
     font-family: Arial,Helvetica,sans-serif;
+    position: relative;
 }
 .ui-chat-box{
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: column;
-    flex-direction: column;
+    display: block;
+    position: relative;
     height: 100%;
 }
 .ui-msg-content{
-    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     background:url("../img/bg2.jpg")no-repeat center;
     background-size: 100% 100%;
+    position: absolute;
+    top: 40px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
 }
 header{
     height: 40px;
@@ -25,12 +28,35 @@ header{
     text-align: center;
     background-color: #52b4e0;
     color: #fff;
+    position: relative;
+}
+.menu-btn{
+    display: block;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    position: absolute;
+}
+.menu-back{
+    display: block;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+.menu-btn span,.menu-back span{
+    font-size: 20px;
 }
 footer{
-    position: relative;
+    position: absolute;
     height: 40px;
     line-height: 40px;
     text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 .ui-input-box{
     height: 40px;
@@ -67,10 +93,13 @@ footer{
     position: static;
     width: 40px;
     height: 40px;
-    background: url("../img/facebtn.png") no-repeat center;
     border-right: 1px solid #eee;
     float: left;
     box-sizing: border-box;
+}
+.ui-face-btn span{
+    font-size: 20px;
+    color: #666;
 }
 /*****************************************************/
 .ui-msg-list{
@@ -80,8 +109,8 @@ footer{
 }
 .ui-msg-list>li{
     font-size: 14px;
-    color: #6d6d6d;
-    margin-bottom: 15px;
+    color: #5f5f5f;
+    margin-bottom: 10px;
 }
 /***********************************************/
 .sys-msg{
@@ -99,7 +128,7 @@ footer{
 }
 /*************************************************/
 .user-msg{
-padding-right: 40px;
+    padding-right: 40px;
 }
 .msg-box-img{
     display: block;
@@ -127,15 +156,14 @@ padding-right: 40px;
 .user-msg .msg-txt-box{
     margin-left: 50px;
     padding-left: 5px;
-    padding-top: 5px;
 }
 .user-msg  .msg-txt-content{
     display: block;
     float: left;
     position: relative;
-    padding: 5px;
+    padding: 10px;
     border-radius: 4px;
-    background-color: #dbe0f7;
+    background-color: #fff;
 }
 .msg-txt-content img{
     max-width: 400px;
@@ -146,10 +174,10 @@ padding-right: 40px;
     width: 0px;
     height: 0px;
     border-top: 10px solid transparent;
-    border-right: 15px solid #dbe0f7;
+    border-right: 15px solid #fff;
     border-bottom: 10px solid transparent;
     position: absolute;
-    top: 4px;
+    top: 10px;
     left: -10px;
 }
 .msg-txt-box::after,.msg-box:after{
@@ -179,25 +207,24 @@ padding-right: 40px;
 .me-msg .msg-txt-box{
     margin-right:  50px;
     padding-right: 5px;
-    padding-top: 5px;
 }
 .me-msg .msg-txt-content{
     display: block;
     float: right;
     position: relative;
-    padding: 5px;
+    padding: 10px;
     border-radius: 4px;
-    background-color: #dbe0f7;
+    background-color: #b2e281;
 }
 .me-msg .msg-arrow{
     display: block;
     width: 0px;
     height: 0px;
     border-top: 10px solid transparent;
-    border-left: 15px solid #dbe0f7;
+    border-left: 15px solid #b2e281;
     border-bottom: 10px solid transparent;
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: -10px;
 }
 /********************************************/
@@ -206,21 +233,17 @@ padding-right: 40px;
 .ui-msg-content::-webkit-scrollbar,.aside-body::-webkit-scrollbar{
     width: 5px;
     height: 16px;
-    background-color: rgba(255, 255, 255, 0.38);
 }
 /*定义滚动条的轨道，内阴影及圆角*/
 .ui-msg-content::-webkit-scrollbar-track,.aside-body::-webkit-scrollbar-track{
-    -webkit-box-shadow: inset 0 0 6px rgba(240, 240, 240, 0.3);
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.36);
 }
 /*定义滑块，内阴影及圆角*/
 .ui-msg-content::-webkit-scrollbar-thumb,.aside-body::-webkit-scrollbar-thumb{
     /*width: 10px;*/
     height: 20px;
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(236, 236, 236, 0.3);
-    background-color: #555;
+    background-color: rgba(255, 255, 255, 0.44);
 }
 /*************************************************************/
 /************************************/
@@ -252,4 +275,53 @@ padding-right: 40px;
     color: #5598e6;
     text-decoration: none;
     margin-left: 10px;
+}
+/*****************用户列表样式*******************/
+.user-list-box{
+    position: absolute;
+    top:40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+}
+.user-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.user-item{
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+}
+.user-item.active{
+    background-color: #f5f5f5;
+}
+.user-item:after{
+    display: table;
+    clear: both;
+    content: '';
+}
+.user-img-box{
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+.user-pic{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+.user-info{
+    margin-left: 45px;
+}
+.user-info .info-row{
+    height: 20px;
+    line-height: 20px;
+    color: #323232;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
 }

@@ -26,12 +26,18 @@
     </script>
     <link rel="stylesheet" href="css/im.css">
     <link href="css/face.css" rel=stylesheet>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1gugdacttrv5z5mi.css">
+    <link rel="stylesheet" href="css/animate.css">
 </head>
 <body>
     <audio src="img/8400.mp3" id="audio"></audio>
     <div class="ui-chat-box" id="content">
-        <header class="ui-section">与智能机器人聊天中</header>
-        <section class="ui-section ui-msg-content">
+        <header class="ui-section">
+            <div class="menu-back" @click="show=false"><span class="iconfont icon-left" ></span></div>
+            <span v-text="channel.nickName"></span>
+            <div class="menu-btn" @click="show=true"><span class="iconfont icon-caidan01"></span></div>
+        </header>
+        <section class="ui-section ui-msg-content" ref="list">
             <ul class="ui-msg-list">
                 <template v-for="item in msgList">
                     <msg-item :msg="item" ></msg-item>
@@ -39,12 +45,22 @@
             </ul>
         </section>
         <footer class="ui-section">
-            <div class="ui-face-btn"></div>
+            <div class="ui-face-btn"><span class="iconfont icon-biaoqing"></span></div>
             <div class="ui-input-box">
-                <input type="text" class="ui-msg-input" v-model="content"  placeholder="请输入...."/>
+                <input type="text" class="ui-msg-input" v-model="content" @keyup.enter="sendMsg" placeholder="请输入...."/>
             </div>
             <button class="ui-sendBtn" type="button" v-on:click="sendMsg">发送</button>
         </footer>
+        <transition name='custom-classes-transition' enter-active-class="animated fadeInRight"
+                    leave-active-class="animated fadeOutRight">
+            <div class="user-list-box" v-show="show">
+                <ul class="user-list">
+                    <template v-for="item in onlineList">
+                        <user-item :user="item" :channel="channel" :show="show" :time="time" ></user-item>
+                    </template>
+                </ul>
+            </div>
+        </transition>
     </div>
     <template id="msgTpl">
         <li class="user-msg" v-if="msg.type==='user'">
@@ -71,6 +87,18 @@
         </li>
         <li class="sys-msg" v-else="msg.type==='sys'">
             <div class="msg-box"><div v-html="msg.content.msg"></div></div>
+        </li>
+    </template>
+    <template id="userTpl">
+        <li class="user-item" :class="user.id==channel.id?'active':''" @click="changeChannel(user)">
+            <div class="user-img-box">
+                <img class="user-pic" :src="user.pic">
+            </div>
+            <div class="user-info">
+                <div class="info-row">{{user.nickName}}</div>
+                <div class="info-row">{{getLastMsg(user)}}</div>
+                <span style="display: none">{{time}}</span>
+            </div>
         </li>
     </template>
     <script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>

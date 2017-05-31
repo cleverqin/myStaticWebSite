@@ -1,6 +1,4 @@
 window.onload=function () {
-    var audio=document.getElementById('audio');
-    audio.volume=0.2;
     String.prototype.Trim = function() {
         return this.replace(/(^\s*)|(\s*$)/g, "");
     }
@@ -9,34 +7,104 @@ window.onload=function () {
     var url1 = "www.tuling123.com/openapi/api?";
     var face=null;
     var robot={
+        id:"a110",
         nickName:"机器人",
         pic:"http://www.tuling123.com/resources/web/v4/img/personalCen/icon36.png"
+    }
+    var audio=document.querySelector('#audio');
+    var state={
+        channel:robot,
+        msg:{
+            "a110":[]
+        }
     }
     var msgItem=Vue.extend({
         template:"#msgTpl",
         props:['msg']
     });
-    window.app = new Vue({
+    var userItem=Vue.extend({
+        template:"#userTpl",
+        props:['user','channel','show','time'],
+        computed:{
+            msg:function () {
+                return state.msg
+            }
+        },
+        methods:{
+            changeChannel:function (user) {
+                this.$parent.channel=user;
+                this.$parent.show=false;
+            },
+            getLastMsg:function () {
+                var lastMsg="";
+                var user=this.$props.user;
+                if(this.msg[user.id]){
+                    var len=this.msg[user.id].length;
+                    if(len>0){
+                        lastMsg=this.msg[user.id][len-1].content.msg;
+                    }
+                }
+                return lastMsg
+            }
+        }
+    });
+    var app = new Vue({
         data:function () {
             return{
                 curUser:{
+                    id:"c111",
                     nickName:"似水流年",
-                    pic:"img/11.jpg"
+                    pic:"img/img.jpg"
                 },
-                content:"",
-                msgList:[
+                onlineList:[
+                    robot,
                     {
-                        type:"sys",
-                        content:{
-                            msg:"系统消息：机器人加入了聊天室"
-                        }
+                        id:'b110',
+                        nickName:"温柔的荆棘",
+                        pic:"img/10.jpg"
                     }
-                ]
+                ],
+                content:"",
+                msgList:[],
+                show:false,
+                channel:robot,
+                time:new Date().getTime()
+            }
+        },
+        watch:{
+            channel:function () {
+                if(!state.msg[this.channel.id]){
+                    state.msg[this.channel.id]=[]
+                }
+                this.msgList=state.msg[this.channel.id];
+                this.scrollFooter();
             }
         },
         el: '#content',
         components: {
-            'msg-item': msgItem
+            'msg-item': msgItem,
+            'user-item': userItem
+        },
+        mounted:function(){
+            var _this=this;
+            this.channel=state.channel;
+            this.msgList=state.msg[this.channel.id];
+            this.$nextTick(function () {
+                face=new Face({
+                    el:document.querySelector(".ui-face-btn"),
+                    callBack:function (face,faceWarp) {
+                        _this.content+="【"+face.title+"】"
+                    }
+                });
+            })
+            var msgItem={
+                type:'sys',
+                content:{
+                    msg:'系统消息：机器人上线了'
+                }
+            }
+            this.msgList.push(msgItem)
+            this.time=new Date().getTime()
         },
         methods:{
             sendMsg:function () {
@@ -51,7 +119,8 @@ window.onload=function () {
                     this.msgList.push(msgItem);
                     this.getMsg(this.content);
                     this.content="";
-                    document.querySelector(".ui-msg-input").focus();
+                    this.scrollFooter();
+                    this.time=new Date().getTime()
                 }else {
                     this.msg="";
                 }
@@ -69,18 +138,23 @@ window.onload=function () {
                         var msgItem={
                             type:'user',
                             content:{
-                                user:robot,
+                                user:_this.channel,
                                 msg:filterData(data)
                             }
                         }
                         _this.msgList.push(msgItem);
+                        _this.time=new Date().getTime()
+                        _this.scrollFooter();
                         audio.play();
                     }
                 })
+            },
+            scrollFooter:function () {
+                this.$nextTick(function () {
+                    var ul = this.$refs.list;
+                    ul.scrollTop = ul.scrollHeight;
+                })
             }
-        },
-        updated:function () {
-            document.querySelector(".ui-msg-content").scrollTop = document.querySelector(".ui-msg-content").scrollHeight;
         }
     });
     face=new Face({
@@ -89,12 +163,6 @@ window.onload=function () {
             app.content+="【"+face.title+"】"
         }
     });
-    document.querySelector('input[type="text"]').addEventListener("click",function () {
-        var target = this;
-        setTimeout(function(){
-            target.scrollIntoViewIfNeeded();
-        },400);
-    })
     function filterData(data) {
         switch(data.code)
         {
