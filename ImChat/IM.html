@@ -33,7 +33,7 @@
     <audio src="img/8400.mp3" id="audio"></audio>
     <div class="ui-chat-box" id="content">
         <header class="ui-section">
-            <div class="menu-back" @click="show=false"><span class="iconfont icon-left" ></span></div>
+            <div class="menu-back" @click="show=false" v-show="show"><span class="iconfont icon-left" ></span></div>
             <span v-text="channel.nickName"></span>
             <div class="menu-btn" @click="show=true"><span class="iconfont icon-caidan01"></span></div>
         </header>
