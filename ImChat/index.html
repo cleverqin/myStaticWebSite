@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="./css/animate.css">
 </head>
 <body>
-<div class="bg bg-blur"></div>
 <audio id="audio" src="./img/8400.mp3"></audio>
+<div class="bg bg-blur"></div>
 <template id="onlineItem">
     <div class="chat_item " :class="channel.id==user.id?'active':''" @click="changeChannel(user)">
         <div class="avatar">
@@ -39,8 +39,9 @@
         <div class="info">
             <h3 class="nickname">
                 <span class="nickname_text" v-text="user.nickName"></span>
+                <span style="display: none">{{time}}</span>
             </h3>
-            <div class="least-msg"></div>
+            <div class="least-msg" v-text="getLastMsg()"></div>
         </div>
     </div>
 </template>
@@ -125,26 +126,29 @@
             <div class="info">
                 <h3 class="nickname">
                     <span class="display_name ng-binding" v-text="curUser.nickName">似水流年</span>
-                    <a class="opt tool-menu" href="javascript:;"><i class="web_wechat_add"></i></a>
-                    <div class="drop-box">
-                        <ul class="dropdown_menu">
-                            <li @click="type='weather'">
-                                <a  href="javascript:;"  title="天气查询" @click="show=true" >
-                                    <i class="menuicon_chat iconfont icon-icon53"></i>天气查询
-                                </a>
-                            </li>
-                            <li @click="type='express'">
-                                <a  href="javascript:;"  title="快递查询" @click="show=true" >
-                                    <i class="menuicon_chat iconfont icon-kuaidi"></i>快递查询
-                                </a>
-                            </li>
-                            <li @click="type='train'">
-                                <a  href="javascript:;"  title="列车查询" @click="show=true">
-                                    <i class="menuicon_chat iconfont icon-train"></i>列车查询
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a class="opt tool-menu" href="javascript:;" @click.stop="showMenu=!showMenu"><i class="web_wechat_add"></i></a>
+                    <transition name='custom-classes-transition' enter-active-class="animate scaleFadeIn"
+                                leave-active-class="animate scaleFadeOut">
+                        <div class="drop-box" v-show="showMenu" style="display: none">
+                            <ul class="dropdown_menu">
+                                <li @click="type='weather'">
+                                    <a  href="javascript:;"  title="天气查询" @click="show=true" >
+                                        <i class="menuicon_chat iconfont icon-icon53"></i>天气查询
+                                    </a>
+                                </li>
+                                <li @click="type='express'">
+                                    <a  href="javascript:;"  title="快递查询" @click="show=true" >
+                                        <i class="menuicon_chat iconfont icon-kuaidi"></i>快递查询
+                                    </a>
+                                </li>
+                                <li @click="type='train'">
+                                    <a  href="javascript:;"  title="列车查询" @click="show=true">
+                                        <i class="menuicon_chat iconfont icon-train"></i>列车查询
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </transition>
                 </h3>
             </div>
         </div>
@@ -153,7 +157,7 @@
             <input type="text" class="searh-input" placeholder="搜索" v-model="keywords">
         </div>
         <div class="nav-view scroll">
-            <online-item :user="item" :channel="channel" v-for="item in filterName()"></online-item>
+            <online-item :user="item" :channel="channel" :time="time" v-for="item in filterName()"></online-item>
         </div>
     </div>
     <div class="panel-right">
@@ -161,7 +165,7 @@
             <div class="title-box" v-text="channel.nickName"></div>
         </div>
         <div class="msg-wrapper">
-            <div class="msg-content scroll">
+            <div class="msg-content scroll" ref="list">
                 <ul class="chat-msg-list">
                     <template v-for="item in msgList">
                         <msg-item :msg="item" ></msg-item>

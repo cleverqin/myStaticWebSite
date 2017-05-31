@@ -1,4 +1,7 @@
 (function () {
+    // window.onbeforeunload=function(){
+    //     return "您确定退出吗？";
+    // }
     String.prototype.Trim = function() {
         return this.replace(/(^\s*)|(\s*$)/g, "");
     }
@@ -6,9 +9,6 @@
         // 返回处理后的值
         return Time(value,"%h:%m")
     })
-    window.onbeforeunload=function(){
-        return "您确定退出吗？";
-    }
     var API={
         robot:{
             url:'http://cors.itxti.net/?www.tuling123.com/openapi/api?',
@@ -55,18 +55,34 @@
         state:{
             channel:robot,
             msg:{
-                a110:[]
+                "a110":[]
             }
         }
     }
     var obj=null;
-    var audio=document.getElementById('audio');
+    var audio=document.getElementById('audio')
     var onlineItem = Vue.extend({
         template:"#onlineItem",
-        props:['user','channel'],
+        props:['user','channel','time'],
+        computed:{
+            msg:function () {
+                return store.state.msg
+            }
+        },
         methods:{
             changeChannel:function (user) {
                 this.$parent.channel=user;
+            },
+            getLastMsg:function () {
+                var lastMsg="";
+                var user=this.$props.user;
+                if(this.msg[user.id]){
+                    var len=this.msg[user.id].length;
+                    if(len>0){
+                        lastMsg=this.msg[user.id][len-1].content.msg;
+                    }
+                }
+                return lastMsg
             }
         }
     });
@@ -77,8 +93,8 @@
     var uiAlter=Vue.extend({
         template:"#myAlter",
         props:['show','type'],
-        data:function () {
-            return {
+        data:function(){
+            return{
                 city:"",
                 com:"圆通",
                 code:'',
@@ -133,9 +149,11 @@
                     pic:"img/img.jpg"
                 },
                 show:false,
+                showMenu:false,
                 type:"weather",
                 txt:"",
                 keywords:'',
+                time:"",
                 onlineList:[robot,{
                     id:'b11',
                     nickName:"温柔的荆棘",
@@ -178,13 +196,8 @@
                     self.txt+="【"+face.title+"】";
                 }
             })
-            $('body').on('click','.tool-menu',function (e) {
-                e.preventDefault()
-                e.stopPropagation();
-                $('.drop-box').toggle()
-            })
             document.addEventListener("click",function (e) {
-                $('.drop-box').hide()
+                self.showMenu=false
             })
         },
         el: '#chatBox',
@@ -196,18 +209,17 @@
         methods:{
             sendMsg:function () {
                 if(this.txt.Trim()!=""){
+                    this.time=new Date().getTime();
                     var msgItem={
                         type:'send',
                         content:{
                             user:this.curUser,
                             msg:obj.replaceFace(this.txt)
                         },
-                        time:new Date().getTime()
+                        time:this.time
                     }
                     this.msgList.push(msgItem);
-                    this.$nextTick(function () {
-                        document.querySelector(".msg-content").scrollTop = document.querySelector(".msg-content").scrollHeight;
-                    })
+                    this.scrollFooter();
                     this.postMsg(this.txt)
                     this.txt="";
                 }else {
@@ -222,17 +234,18 @@
                     userid:"123456"
                 },function (data) {
                     if(data.text){
+                        _this.time=new Date().getTime();
                         var msgItem={
                             type:'user',
                             content:{
                                 user:_this.channel,
                                 msg:filterData(data)
                             },
-                            time:new Date().getTime()
+                            time:_this.time
                         }
                         _this.msgList.push(msgItem);
                         _this.$nextTick(function () {
-                           _this.scrollFooter()
+                            _this.scrollFooter()
                         })
                         audio.play();
                     }
@@ -249,7 +262,8 @@
                 return arr;
             },
             scrollFooter:function () {
-                document.querySelector(".msg-content").scrollTop = document.querySelector(".msg-content").scrollHeight;
+                const ul = this.$refs.list;
+                ul.scrollTop = ul.scrollHeight;
             }
         }
     });

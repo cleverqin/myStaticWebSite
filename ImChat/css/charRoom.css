@@ -197,7 +197,7 @@ body{
     top: 100%;
     right: 0;
     z-index: 99;
-    display: none;
+    display: block;
 }
 .dropdown_menu li i {
     margin-right: 8px;
@@ -619,4 +619,34 @@ a.json-placeholder:hover {
 .json-renderer{
     padding: 30px;
     margin: 0 auto;
+}
+/***********************************************/
+@keyframes scaleFadeIn {
+    0%{
+        opacity: 0;
+        transform:translateY(-40px) scale(0.7);
+    }
+    100%{
+        opacity: 1;
+        transform:translateY(0) scale(1);
+    }
+}
+@keyframes scaleFadeOut {
+    0%{
+        opacity: 1;
+        transform:translateY(0) scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform:translateY(-40px) scale(0.7);
+    }
+}
+.animate{
+    animation-duration: 0.5s;
+}
+.animate.scaleFadeIn{
+    animation-name: scaleFadeIn;
+}
+.animate.scaleFadeOut{
+    animation-name: scaleFadeOut;
 }
