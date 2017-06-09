@@ -336,6 +336,7 @@ a{
 }
 #lrc div.active_lrc{
     color: #f36976;
+    font-size: 14px;
 }
 #lrc div{
     color: #ccc;
@@ -343,6 +344,7 @@ a{
     text-align: center;
     line-height: 20px;
     height: 20px;
+    transition: all 0.5s;
 }
 #lrc{
     max-height: 100px;

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的插件</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_sz3ciu8wm31sjor.css">
+    <link rel="stylesheet" href="css/plug-ins.css">
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/plug-ins.js"></script>
+</head>
+<body>
+    <div class="content-section">
+        <div class="ss-slide" id="slidesBox">
+            <ul class="ss-content" id="box" >
+                <li >
+                    <img src="https://cn.bing.com/az/hprichbg/rb/Prayercard_ZH-CN13472871640_1920x1080.jpg">
+                </li>
+
+                <li >
+                    <img src="https://cn.bing.com/az/hprichbg/rb/EtretatSunrise_ZH-CN10891175350_1920x1080.jpg">
+                </li>
+
+                <li >
+                    <img src="https://cn.bing.com/az/hprichbg/rb/KaprunDam_ZH-CN8666050794_1920x1080.jpg">
+                </li>
+
+                <li >
+                    <img src="https://cn.bing.com/az/hprichbg/rb/BluestripedFangblenny_ZH-CN10868881606_1920x1080.jpg">
+                </li>
+
+                <li >
+                    <img src="https://cn.bing.com/az/hprichbg/rb/TexasBluebonnets_ZH-CN10361963785_1920x1080.jpg">
+                </li>
+
+                <li >
+                    <img src="https://cn.bing.com/az/hprichbg/rb/PonteSantAngelo_ZH-CN15413822788_1920x1080.jpg">
+                </li>
+
+                <li >
+                    <img src="https://cn.bing.com/az/hprichbg/rb/Playing_ZH-CN12541345417_1920x1080.jpg">
+                </li>
+
+                <li >
+                    <img src="https://cn.bing.com/az/hprichbg/rb/MtTamVideo_ZH-CN10798436683_1920x1080.jpg">
+                </li>
+            </ul>
+        </div>
+        <script>
+            $(".ss-slide").slide({
+                animationType:"fade",
+                beforeBack:function (index) {},
+                afterBack:function (index) {}
+            })
+        </script>
+    </div>
+    <div class="content-section">
+        <a href="javscript:void(0)" class="ui-btn ui-btn-primary" data-modal="modal">打开模态窗</a>
+        <div class="ui-dialog-modal" id="modal">
+            <div class="ui-modal-content">
+                <div class="ui-modal-header">
+                    <div class="ui-modal-title">标题</div>
+                    <div class="ui-modal-closeBtn iconfont icon-guanbi" data-close="modal"></div>
+                </div>
+                <div class="ui-modal-body">内容</div>
+                <div class="ui-modal-footer">
+                    <div class="ui-modal-btnBox">
+                        <a href="javascript:void (0)" class="ui-btn ui-btn-primary">确定</a>
+                        <a href="javascript:void (0)" class="ui-btn ui-btn-default" data-close="modal">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#modal').on('modal-open',function () {
+                console.log('你打开了模态窗')
+            })
+        </script>
+    </div>
+    <div class="content-section">
+        <a href="javascript:$.showMsg('这是一条普通消息')" class="ui-btn ui-btn-primary">打开普通消息</a>
+        <a href="javascript:$.showMsg('这是一条成功消息',{type:'success'})" class="ui-btn ui-btn-success">打开成功消息</a>
+        <a href="javascript:$.showMsg('这是一条警告消息',{type:'warning'})" class="ui-btn ui-btn-warning">打开警告消息</a>
+        <a href="javascript:$.showMsg('这是一条错误消息',{type:'error'})" class="ui-btn ui-btn-error">打开错误消息</a>
+    </div>
+    <div class="content-section">
+        <a href="javascript:" class="ui-btn ui-btn-primary">primary</a>
+        <a href="javascript:" class="ui-btn ui-btn-success">success</a>
+        <a href="javascript:" class="ui-btn ui-btn-warning">warning</a>
+        <a href="javascript:" class="ui-btn ui-btn-error">error</a>
+        <a href="javascript:" class="ui-btn ui-btn-default">default</a>
+    </div>
+    <div class="content-section">
+        <a href="javascript:" class="ui-btn ui-btn-primary ui-btn-block">primary</a>
+        <a href="javascript:" class="ui-btn ui-btn-success ui-btn-block">success</a>
+        <a href="javascript:" class="ui-btn ui-btn-warning ui-btn-block">warning</a>
+        <a href="javascript:" class="ui-btn ui-btn-error ui-btn-block">error</a>
+        <a href="javascript:" class="ui-btn ui-btn-default ui-btn-block">default</a>
+    </div>
+    <div class="content-section">
+        <a href="javascript:$.confirmMsg({text:'这是一条普通信息'})" class="ui-btn ui-btn-primary">确认消息弹窗</a>
+        <a href="javascript:" class="ui-btn ui-btn-primary" id="loading">加载动画</a>
+    </div>
+    <div class="content-section">
+        <div class="myscroll">
+            <ul class="autoScrollContent">
+                <li>
+                    <span class="tagUserName">李****71</span>
+                    <span class="PrizeName">iphone6 Plus</span>
+                </li>
+                <li>
+                    <span class="tagUserName">李****712</span>
+                    <span class="PrizeName">iphone6 Plus</span>
+                </li>
+                <li>
+                    <span class="tagUserName">李****713</span>
+                    <span class="PrizeName">iphone6 Plus</span>
+                </li>
+                <li>
+                    <span class="tagUserName">李****714</span>
+                    <span class="PrizeName">iphone6 Plus</span>
+                </li>
+                <li>
+                    <span class="tagUserName">李****715</span>
+                    <span class="PrizeName">iphone6 Plus</span>
+                </li>
+                <li>
+                    <span class="tagUserName">李****716</span>
+                    <span class="PrizeName">iphone6 Plus</span>
+                </li>
+            </ul>
+        </div>
+        <script>
+            $('.myscroll').myScroll()
+        </script>
+    </div>
+</body>
+</html>

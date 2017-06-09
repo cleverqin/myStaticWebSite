@@ -1,0 +1,425 @@
+/********slides轮播插件样式——start************/
+.ss-slide{position:relative;display:block;overflow:hidden;margin:0 auto;}
+.ss-slide>ul,.ss-slide>ul>li{position:relative;top:0;left:0;display:block;margin:0;padding:0;width:100%;list-style:none;}
+.ss-slide>ul>li:first-child{position: relative;}
+.ss-slide>ul>li{position: absolute;}
+.ss-slide>.bidBox{position:absolute;bottom:0;z-index:3;display:block;padding:10px 0;width:100%;text-align:center;}
+.ss-slide>.bidBox>.bidItem{display:inline-block;margin-left:10px;width:9px;height:9px;border-radius:100%;background-color:#afafaf;cursor:pointer;}
+.ss-slide>.bidBox>.bidItem.active{background-color:#f17214;}
+.ss-slide>.bidBox>.bidItem:hover{background-color: #f17214;}
+.ss-slide .ui-next,.ss-slide .ui-prev{position:absolute;top:50%;z-index:3;margin-top:-35px;width:41px;height:69px;background:url(../img/icon-slides.png) no-repeat;cursor:pointer}
+.ss-slide .ui-prev{left:0;background-position:-84px 0}
+.ss-slide .ui-next{right:0;background-position:-93pt 0}
+.ss-slide .ui-prev:hover{background-position:0 0}
+.ss-slide .ui-next:hover{right:0;background-position:-42px 0}
+/*********************************************************************/
+/*********************模态窗样式*************************/
+.ui-dialog-modal{
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(50, 50, 50, 0.58);
+    display: none;
+    z-index: 999;
+    text-align: center;
+}
+.ui-dialog-modal:after{
+    display: inline-block;
+    content: "";
+    height: 100%;
+    vertical-align: middle;
+}
+.ui-modal-content{
+    background-color: #fff;
+    padding: 15px 20px;
+    position: relative;
+    min-width: 320px;
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.ui-modal-header{
+    position: relative;
+}
+.ui-modal-closeBtn{
+    display: block;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+    color: #999;
+    cursor: pointer;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+.ui-modal-closeBtn:hover{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.ui-modal-body{
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+}
+.ui-modal-title{
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #666;
+}
+.ui-modal-btnBox{
+    text-align: right;
+    padding-top: 15px;
+}
+.ui-modal-btn{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-left: 10px;
+}
+.ui-sure-btn{
+    color: #fff;
+    background-color: #1d90e6;
+}
+.ui-cancel-btn{
+    color: #ccc;
+    background-color: #eee;
+}
+.ui-sure-btn:hover{
+    background-color: #0852e6;
+}
+.ui-cancel-btn:hover{
+    color: #eee;
+    background-color: #ccc;
+}
+.slideIn{
+    -webkit-animation:slideIn 0.5s;
+    -o-animation:slideIn 0.5s;
+    animation:slideIn 0.5s;
+}
+.slideOut{
+    -webkit-animation:slideOut 0.5s;
+    -o-animation:slideOut 0.5s;
+    animation:slideOut 0.5s;
+}
+@keyframes slideIn {
+    0%{
+        opacity: 0;
+        -webkit-transform: translate(0,-50%);
+        -moz-transform: translate(0,-50%);
+        -ms-transform: translate(0,-50%);
+        -o-transform: translate(0,-50%);
+        transform: translate(0,-50%);
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform: translate(0);
+        -moz-transform: translate(0);
+        -ms-transform: translate(0);
+        -o-transform: translate(0);
+        transform: translate(0);
+    }
+}
+@keyframes slideOut {
+    0%{
+        opacity: 1;
+        -webkit-transform: translate(0);
+        -moz-transform: translate(0);
+        -ms-transform: translate(0);
+        -o-transform: translate(0);
+        transform: translate(0);
+    }
+    100%{
+        opacity: 0;
+        -webkit-transform: translate(0,-50%);
+        -moz-transform: translate(0,-50%);
+        -ms-transform: translate(0,-50%);
+        -o-transform: translate(0,-50%);
+        transform: translate(0,-50%);
+    }
+}
+/***************************************************************/
+/******************消息提示***************************/
+.ui-msg-box{
+    height: 40px;
+    min-width: 280px;
+    box-shadow: 0 1px 2px #ccc;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    margin-left: -140px;
+    z-index: 1000;
+    background-color: #fff;
+}
+.ui-icon-type{
+    height: 40px;
+    width: 40px;
+    float: left;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+}
+.ui-msg-text{
+    margin-left: 40px;
+    padding: 10px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #999999;
+}
+.ui-msg-box.info .ui-icon-type{
+    background-color: #20A0FF;
+}
+.ui-msg-box.success .ui-icon-type{
+    background-color: #13CE66;
+}
+.ui-msg-box.warning .ui-icon-type{
+    background-color: #F7BA2A;
+}
+.ui-msg-box.error .ui-icon-type{
+    background-color: #FF4949;
+}
+@keyframes scaleFadeIn {
+    0%{
+        opacity: 0;
+        transform:translateY(-40px);
+    }
+    100%{
+        opacity: 1;
+        transform:translateY(0);
+    }
+}
+@keyframes scaleFadeOut {
+    0%{
+        opacity: 1;
+        transform:translateY(0);
+    }
+    100%{
+        opacity: 0;
+        transform:translateY(-40px);
+    }
+}
+.animate{
+    animation-duration: 0.5s;
+}
+.animate.scaleFadeIn{
+    animation-name: scaleFadeIn;
+}
+.animate.scaleFadeOut{
+    animation-name: scaleFadeOut;
+}
+/*********************************************/
+.ui-btn{
+    display: inline-block;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+.ui-btn-primary{
+    background-color: #3385ff;
+    color: #fff;
+}
+.ui-btn-primary:hover{
+    background-color: #317ef3;
+}
+.ui-btn-primary:active{
+    background-color: #3075dc;
+}
+.ui-btn-success{
+    background-color: #13CE66;
+    color: #fff;
+}
+.ui-btn-success:hover{
+    background-color: #12c260;
+}
+.ui-btn-success:active{
+    background-color: #11ba5c;
+}
+.ui-btn-warning{
+    background-color: #F7BA2A;
+    color: #fff;
+}
+.ui-btn-warning:hover{
+    background-color: #e9b028;
+}
+.ui-btn-warning:active{
+    background-color: #e2aa27;
+}
+.ui-btn-error{
+    background-color: #FF4949;
+    color: #fff;
+}
+.ui-btn-error:hover{
+    background-color: #f24545;
+}
+.ui-btn-error:active{
+    background-color: #e54141;
+}
+.ui-btn-default{
+    background-color: #cbcbcb;
+    color: #fff;
+}
+.ui-btn-default:hover{
+    background-color: #c1c1c1;
+}
+.ui-btn-default:active{
+    background-color: #afafaf;
+}
+.ui-btn-block{
+    display: block;
+    text-align: center;
+}
+/********************************************/
+.ui-confirm-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: rgba(15, 15, 15, 0.52);
+    text-align: center;
+}
+.ui-confirm-box:after{
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 0;
+    vertical-align: middle;
+}
+.ui-confirm-wrapper{
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #fff;
+    width: 420px;
+    border-radius: 3px;
+    font-size: 16px;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.ui-confirm-title{
+    position: relative;
+    padding: 20px 20px 0;
+}
+.ui-confirm-text{
+    padding-left: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 700;
+    height: 18px;
+    color: #333;
+}
+.ui-confirm-body{
+    padding: 30px 20px;
+    color: #48576a;
+    font-size: 14px;
+    position: relative;
+}
+.ui-confirm-btns{
+    padding: 10px 20px 15px;
+    text-align: right;
+}
+.ui-confirm-close{
+    position: absolute;
+    position: absolute;
+    top: 19px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: #999;
+}
+.ui-confirm-close:hover{
+    color: #4db3ff;
+}
+/**********************************/
+.ui-loading{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url("../img/oval.svg") no-repeat center;
+    background-size: 30px 30px;
+    border-radius: 7px;
+    text-align: left;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.ui-loading-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(15, 15, 15, 0.49);
+    z-index: 99;
+}
+.ui-loading-box:after{
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 0;
+    vertical-align: middle;
+}
+/************************************/
+.content-section{
+    width: 1000px;
+    margin: 15px auto 0 auto;
+    padding: 1px 0;
+}
+.content-section .ui-btn-block{
+    margin-bottom: 10px;
+}
+#box img{
+    width: 100%;
+}
+#loading{
+    position: relative;
+}
+.myscroll{
+    height: 204px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+.myscroll ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.myscroll ul li{
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ccc;
+}
+.autoScrollContent>li>span{
+    float: left;
+    display: block;
+    width: 50%;
+    height: 40px;
+    text-align: center;
+}

@@ -41,7 +41,7 @@
                 <span class="nickname_text" v-text="user.nickName"></span>
                 <span style="display: none">{{time}}</span>
             </h3>
-            <div class="least-msg" v-text="getLastMsg()"></div>
+            <div class="least-msg" v-html="getLastMsg()"></div>
         </div>
     </div>
 </template>
