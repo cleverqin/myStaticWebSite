@@ -564,6 +564,9 @@ body{
     font-weight: bold;
 }
 /****************************/
+.json-renderer{
+    font-size: 14px;
+}
 ul.json-dict, ol.json-array {
     list-style-type: none;
     margin: 0 0 0 1px;

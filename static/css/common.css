@@ -183,3 +183,10 @@ body{
     text-align: center;
     margin-top: 10px;
 }
+.player-content-box{
+    padding: 15px 0;
+}
+#chatBox{
+    margin-top: 0;
+    box-shadow: 0 0 3px 1px #ccc;
+}
