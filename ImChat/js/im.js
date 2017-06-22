@@ -2,7 +2,7 @@ window.onload=function () {
     String.prototype.Trim = function() {
         return this.replace(/(^\s*)|(\s*$)/g, "");
     }
-    var urlPre = "http://cors.itxti.net/?"
+    var urlPre = "http://"
     //发车、到站 查时刻
     var url1 = "www.tuling123.com/openapi/api?";
     var face=null;

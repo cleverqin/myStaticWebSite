@@ -8,7 +8,7 @@
     })
     var API={
         robot:{
-            url:'http://cors.itxti.net/?www.tuling123.com/openapi/api?',
+            url:'http://www.tuling123.com/openapi/api?',
             type:'get',
             dataType:"json"
         },
