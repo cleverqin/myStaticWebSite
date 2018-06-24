@@ -58,32 +58,35 @@ body{
     display: block;
     width: 4em;
     float: left;
-    height: 2.6em;
-    line-height: 2.6em;
+    height: 40px;
+    line-height: 40px;
     font-weight:bold;
     color: rgb(107, 109, 115);
 }
 .form-group input{
-    padding: 0.3em;
-    height: 2em;
-    line-height: 2em;
+    padding: 0 10px;
+    height: 38px;
+    line-height: 38px;
     border: 1px solid #a4a6ac;
     border-radius: 4px;
+    color: #555555;
+    font-size: 18px;
+    font-weight: 600;
 }
 .btn {
     display: inline-block;
     *display: inline;
-    padding: 0.28em 0.85em;
+    padding: 0 15px;
     margin-bottom: 0;
     *margin-left: .3em;
-    line-height: 1.43;
+    line-height: 40px;
     color: #333333;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
     background-color: #f5f5f5;
     *background-color: #e6e6e6;
-    border: 1px solid #cccccc;
+    border: none;
     *border: 0;
     border-color: #e6e6e6 #e6e6e6 #bfbfbf;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -138,6 +141,7 @@ td,th{
     border-bottom:1px solid #dddddd;
     line-height: 2em;
     text-align: center;
+    padding: 10px 15px;
 }
 .center{
    text-align: center;
